@@ -1,0 +1,98 @@
+.btn-group{
+	background-color: beige;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	align-items: center;
+	height: 38px;
+	width: 100%;
+}
+
+.btn-group button {
+  background-color: #74b9ff; /* Green background */
+  border: 1px solid black; /* Black border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  width: 100%;
+  height: 38px;
+}
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #6c5ce7;
+}
+.btn-group button:focus {
+  background-color: #6c5ce7;
+}
+.btn-group button:active {
+  background-color: #6c5ce7;
+}
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: #fd79a8;
+  justify-content: flex-start;
+  margin-top: -38px;
+}
+.dropdown .dropbtn {
+  display: flex;
+  position: absolute;
+  background-color: #6c5ce7;
+  border: 1px solid black;
+  outline: none;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0;
+  width: auto /* Important for vertical align on mobile phones */
+}
+.dropdown .dropbtninactive {
+  background-color: #fd79a8;
+}
+.dropdown-content {
+  display: block;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 4;
+}
+
+.dropdown-content button {
+  color: white;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-content .dropbtn:hover {
+  background-color: #e84393;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtninactive {
+  background-color: #6c5ce7;
+}
+#hamburger, #hamburger2 {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+	.btn-group button {
+	  padding: 0px; /* Some padding */
+	}
+  #other, #other2 {
+    display: none;
+  }
+  #hamburger, #hamburger2 {
+    display: flex;
+    justify-content: center;
+    background-color: #fd79a8;
+  }
+}

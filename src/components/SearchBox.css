@@ -1,0 +1,58 @@
+.searchBox {
+	padding: 10px;
+	height: 38px;
+	border-color: hotpink;
+	border-radius: 24px;
+	border-width: 2px;
+	background-color: #fcfcf4;
+	vertical-align: middle;
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 12px 10px 0px 10px;
+	width: 100%;
+	text-align: center;
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+100;Grey+Flat */
+background: rgb(238,238,238); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(238,238,238,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.searchBox:focus {
+	padding: 10px;
+	border-width: 2px;
+	color: hotpink;
+	outline: none;
+}
+
+.searchBox::placeholder {
+	color: hotpink;
+	opacity: 0.6;
+}
+
+.searchBox:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: hotpink;
+}
+.searchBox::-ms-input-placeholder { /* Microsoft Edge */
+  color: hotpink;
+}
+@media screen and (max-width: 1200px) {
+  .searchBox {
+	margin: 0px 10px 0px 10px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .searchBox {
+	margin: 0px 0px 0px 2px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .searchBox {
+	height: 34px;
+	margin: 10px 10px 10px 4px;
+  }
+}

@@ -1,0 +1,74 @@
+h1{
+	font-family: Roboto, sans;
+	font-weight: 700;
+	color: hotpink;
+}
+
+.mainContainer {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1;
+	grid-template-rows: 58px 38px 1fr 54px;
+	overflow: hidden;
+	background-image: url('chalkboard.jpg');
+	box-sizing: border-box;
+	z-index: 1;
+}
+
+.headerDiv {
+	box-sizing: border-box;
+	display: block;
+	text-align: center;
+	z-index: 1;
+}
+.navDiv{
+	box-sizing: border-box;
+	display: block;
+	text-align: center;
+	z-index: 1;
+}
+.mainDiv {
+	box-sizing: border-box;
+	overflow-y: scroll;
+	border: 1px solid black;
+	text-align: center;
+	z-index: 1;
+	width: 100%;
+	padding: 8px 4px;
+	overflow-x: hidden;
+}
+.footerDiv {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	font-family: Roboto, sans;
+	font-weight: 300;
+	color: #ffd700;
+	padding: 0;
+	margin: 0;
+}
+@media screen and (max-width: 1200px) {
+	.mainContainer {
+		grid-template-columns: 1;
+		grid-template-rows: 84px 38px 1fr 54px;
+	}
+	.searchDiv{
+		margin: 4px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+}
+@media screen and (max-width: 350px) {
+  .searchDiv {
+	width: 250px;
+  }
+}
