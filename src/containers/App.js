@@ -3,15 +3,15 @@ import CardList2 from '../components/CardList2';
 import NavTabs from '../components/NavTabs';
 import Header from '../components/Header';
 import IndiCard from '../components/IndiCard';
-// import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCaretDown, faBars } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faCaretDown, faBars)
 
-// ReactGA.initialize('UA-139848771-1');
-// ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.initialize('UA-139848771-3');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
 	constructor() {
