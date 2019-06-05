@@ -34,23 +34,21 @@ class App extends Component {
 
 	getSnapshotBeforeUpdate(prevProps, prevState) {
     // Capture the scroll position so we can adjust scroll later.
-    if (prevState.route !== this.state.route) {
-      	let elmnt = document.getElementById("myDIV");
-      	let scrollPos = elmnt.scrollTop;
-      	let arr = [prevState.route, scrollPos];
-      	// this.trackScrollPositions(prevState.route, prevState.scrollPos)
-      	// this.mapRouteToScrollPositions();
-      	return arr;
-    }
-    return null;
-  }
+	    if (prevState.route !== this.state.route) {
+	      	let elmnt = document.getElementById("myDIV");
+	      	let scrollPos = elmnt.scrollTop;
+	      	let arr = [prevState.route, scrollPos];
+	      	return arr;
+	    }
+	    return null;
+	}
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-   if (snapshot !== null) {
-      	this.trackScrollPositions(snapshot[0], snapshot[1])
-      	this.mapRouteToScrollPositions();
-    }
-  }
+	componentDidUpdate(prevProps, prevState, snapshot) {
+	    if (snapshot !== null) {
+	      	this.trackScrollPositions(snapshot[0], snapshot[1]);
+	      	this.mapRouteToScrollPositions();
+	    }
+	}
 	onSearchChange = (event) => {
 		this.setState({ searchfield: event.target.value })
 	}
@@ -68,10 +66,10 @@ class App extends Component {
 		searchPlaceHolder.value = '';
 	}
 
-	trackScrollPositions(route, receivedScrollPos) {
+	async trackScrollPositions(routeRec, receivedScrollPos) {
 		let c = this.state.scrollPositions;
 		this.state.scrollTabNames.map((tabName, index)=>{
-			if(tabName===route) {
+			if(tabName===routeRec) {
 				c[index] = receivedScrollPos;
 				this.setState({scrollPositions: c});
 			}
@@ -80,11 +78,13 @@ class App extends Component {
 	}
 	mapRouteToScrollPositions() {
 		let elmnt = document.getElementById("myDIV");
+		let d = 0;
 		this.state.scrollTabNames.map((tabName, index)=>{
 			if(tabName===this.state.route) {
-				elmnt.scrollTop = this.state.scrollPositions[index];
+				d = this.state.scrollPositions[index];
+				elmnt.scrollTop = d;
 			} 
-			return elmnt;
+			return d;
 		});
 	}
 
