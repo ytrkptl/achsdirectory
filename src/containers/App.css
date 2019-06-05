@@ -88,6 +88,7 @@ h1{
 		align-items: center;
 	}
 }
+
 @media screen and (max-width: 350px) {
   .searchDiv {
 	width: 250px;

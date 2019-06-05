@@ -21,7 +21,9 @@ class App extends Component {
 			route: 'home',
 			searchfield: '',
 			indiCard: false,
-			cardNum: 0
+			cardNum: 0,
+			scrollTabNames: ["home", "math", "science", "socialstudies", "english", "voc", "cougarcenter", "pe", "sped", "office", "assist", "other"],
+			scrollPositions: [0,0,0,0,0,0,0,0,0,0,0,0]
 		}
 	}
 	componentDidMount() {
@@ -30,6 +32,25 @@ class App extends Component {
 		.then(users => this.setState({ movies: users }));
 	}
 
+	getSnapshotBeforeUpdate(prevProps, prevState) {
+    // Capture the scroll position so we can adjust scroll later.
+    if (prevState.route !== this.state.route) {
+      	let elmnt = document.getElementById("myDIV");
+      	let scrollPos = elmnt.scrollTop;
+      	let arr = [prevState.route, scrollPos];
+      	// this.trackScrollPositions(prevState.route, prevState.scrollPos)
+      	// this.mapRouteToScrollPositions();
+      	return arr;
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+   if (snapshot !== null) {
+      	this.trackScrollPositions(snapshot[0], snapshot[1])
+      	this.mapRouteToScrollPositions();
+    }
+  }
 	onSearchChange = (event) => {
 		this.setState({ searchfield: event.target.value })
 	}
@@ -38,16 +59,33 @@ class App extends Component {
 		this.setState({indiCard: value, cardNum: item, route: this.state.route })
 	}
 
-	onRouteChange = (route) => {
+	onRouteChange = (route) => {      	
 		this.setState({route: route, searchfield: '', indiCard: false, cardNum: 0});
 		fetch(`https://achsdirectory-api.herokuapp.com/${route}`)
 		.then(response=>response.json())
 		.then(users => this.setState({ movies: users }));
 		var searchPlaceHolder = document.getElementById("searchBox");
 		searchPlaceHolder.value = '';
-		var elmnt = document.getElementById("myDIV");
-		elmnt.scrollLeft = 0;
-		elmnt.scrollTop = 0;
+	}
+
+	trackScrollPositions(route, receivedScrollPos) {
+		let c = this.state.scrollPositions;
+		this.state.scrollTabNames.map((tabName, index)=>{
+			if(tabName===route) {
+				c[index] = receivedScrollPos;
+				this.setState({scrollPositions: c});
+			}
+			return c;
+		})
+	}
+	mapRouteToScrollPositions() {
+		let elmnt = document.getElementById("myDIV");
+		this.state.scrollTabNames.map((tabName, index)=>{
+			if(tabName===this.state.route) {
+				elmnt.scrollTop = this.state.scrollPositions[index];
+			} 
+			return elmnt;
+		});
 	}
 
 	render() {
