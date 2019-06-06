@@ -12,7 +12,7 @@ library.add(faCaretDown, faBars)
 
 ReactGA.initialize('UA-139848771-3');
 ReactGA.pageview(window.location.pathname + window.location.search);
-const endpointUrl = process.env.ENDPOINT_URL;
+
 class App extends Component {
 	constructor() {
 		super();
@@ -27,7 +27,7 @@ class App extends Component {
 		}
 	}
 	componentDidMount() {
-		fetch(endpointUrl)
+		fetch('https://achsdirectory-api.herokuapp.com/')
 		.then(response=>response.json())
 		.then(users => this.setState({ movies: users }));
 	}
@@ -59,7 +59,7 @@ class App extends Component {
 
 	onRouteChange = (route) => {      	
 		this.setState({route: route, searchfield: '', indiCard: false, cardNum: 0});
-		fetch(`${endpointUrl}${route}`)
+		fetch(`https://achsdirectory-api.herokuapp.com/${route}`)
 		.then(response=>response.json())
 		.then(users => this.setState({ movies: users }));
 		var searchPlaceHolder = document.getElementById("searchBox");
