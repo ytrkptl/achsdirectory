@@ -17,82 +17,61 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
+			allmovies: [],
 			movies: [],
 			route: 'home',
 			searchfield: '',
 			indiCard: false,
-			cardNum: 0,
-			scrollTabNames: ["home", "math", "science", "socialstudies", "english", "voc", "cougarcenter", "pe", "sped", "office", "assist", "other"],
-			scrollPositions: [0,0,0,0,0,0,0,0,0,0,0,0]
+			cardNum: 0
 		}
 	}
 	componentDidMount() {
 		fetch('https://achsdirectory-api.herokuapp.com/')
 		.then(response=>response.json())
-		.then(users => this.setState({ movies: users }));
+		.then(users => this.setState({ allmovies: users, movies: users }));
 	}
 
-	getSnapshotBeforeUpdate(prevProps, prevState) {
-    // Capture the scroll position so we can adjust scroll later.
-	    if (prevState.route !== this.state.route) {
-	      	let elmnt = document.getElementById("myDIV");
-	      	let scrollPos = elmnt.scrollTop;
-	      	let arr = [prevState.route, scrollPos];
-	      	return arr;
-	    }
-	    return null;
-	}
-
-	componentDidUpdate(prevProps, prevState, snapshot) {
-	    if (snapshot !== null) {
-	      	this.trackScrollPositions(snapshot[0], snapshot[1]);
-	      	this.mapRouteToScrollPositions();
-	    }
-	}
 	onSearchChange = (event) => {
 		this.setState({ searchfield: event.target.value })
 	}
 
 	requestIndiCard = (value, item) => {
-		this.setState({indiCard: value, cardNum: item, route: this.state.route })
+		if (value){
+			this.setState({indiCard: value, cardNum: item, route: this.state.route })
+			console.log(this.state.cardNum);
+		} else {
+			this.setState({indiCard: value, route: this.state.route })
+			console.log(this.state.cardNum);
+		}
 	}
 
-	onRouteChange = (route) => {      	
-		this.setState({route: route, searchfield: '', indiCard: false, cardNum: 0});
-		fetch(`https://achsdirectory-api.herokuapp.com/${route}`)
-		.then(response=>response.json())
-		.then(users => this.setState({ movies: users }));
+	onRouteChange = (route) => {  
+		this.requestIndiCard(false,0);  
 		var searchPlaceHolder = document.getElementById("searchBox");
 		searchPlaceHolder.value = '';
+		this.setState({searchfield: ''})
+		if (route==='home') {
+			this.setState({movies: this.state.allmovies}); 
+		} else {
+			const filteredRoute = this.state.allmovies.filter(movie =>{
+				return movie.contacts.department.includes(route);
+			});
+			this.setState({movies: filteredRoute});
+		}
+		
+		this.scrollUp();
 	}
 
-	async trackScrollPositions(routeRec, receivedScrollPos) {
-		let c = this.state.scrollPositions;
-		this.state.scrollTabNames.map((tabName, index)=>{
-			if(tabName===routeRec) {
-				c[index] = receivedScrollPos;
-				this.setState({scrollPositions: c});
-			}
-			return c;
-		})
-	}
-	mapRouteToScrollPositions() {
-		let elmnt = document.getElementById("myDIV");
-		let d = 0;
-		this.state.scrollTabNames.map((tabName, index)=>{
-			if(tabName===this.state.route) {
-				d = this.state.scrollPositions[index];
-				elmnt.scrollTop = d;
-			} 
-			return d;
-		});
+	scrollUp() {
+		let element = document.getElementById("myDIV");
+		element.scrollTop = 0;
 	}
 
 	render() {
-		const { searchfield, movies, indiCard, cardNum } = this.state;
+		const { searchfield, movies, indiCard, cardNum, allmovies } = this.state;
 		const filteredContacts = movies.filter(movie =>{
-			return movie.contacts.lastname.toLowerCase().includes(searchfield.toLowerCase()) 
-				|| movie.contacts.firstname.toLowerCase().includes(searchfield.toLowerCase())
+			return movie.contacts.lastname.toLowerCase().includes(searchfield.trim().toLowerCase()) 
+				|| movie.contacts.firstname.toLowerCase().includes(searchfield.trim().toLowerCase())
 				|| movie.contacts.email.toLowerCase().includes(searchfield.toLowerCase())
 				|| movie.contacts.phone.includes(searchfield)
 		});
@@ -108,7 +87,7 @@ class App extends Component {
 								<h1>No matches found. Try searching again!</h1>:
 								!indiCard 
 								? <CardList2  movies={filteredContacts} requestIndiCard={this.requestIndiCard} />
-								: <IndiCard {...movies[cardNum].contacts}
+								: <IndiCard {...allmovies[cardNum].contacts}
 									id={cardNum} 
 									requestIndiCard={this.requestIndiCard} />
 							}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-const Card  = ({ requestIndiCard, lastname, firstname, email, phone, id, url, itemNum}) => {
+const Card  = ({ requestIndiCard, lastname, firstname, email, phone, url, itemNum}) => {
 	let name = firstname + ' ' + lastname;
 	return (
 		<div className='CardDetails growCard'>
@@ -15,7 +15,7 @@ const Card  = ({ requestIndiCard, lastname, firstname, email, phone, id, url, it
 					</div>
 				</div>
 			</div>
-			<button onClick={()=>requestIndiCard(true, id)} className="buttonStyle2">
+			<button onClick={()=>requestIndiCard(true, itemNum)} className="buttonStyle2">
 				<div className="textContainer">
 					<span className="divtry">Click here for schedule</span>
 					<h3 className="subjectTitle">{name}</h3>
