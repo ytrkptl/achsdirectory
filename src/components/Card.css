@@ -164,6 +164,9 @@
   visibility: visible;
 }
 @media screen and (max-width: 500px) {
+	.listParent {
+		margin-right: 50px;
+	}
 	.CardDetails {
 		border-radius: 15px;
 		height: 110px;

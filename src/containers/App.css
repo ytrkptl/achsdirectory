@@ -41,19 +41,6 @@ h1{
 	padding: 8px 4px;
 	overflow-x: hidden;
 }
-.footerDiv {
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	z-index: 1;
-	font-family: Roboto, sans;
-	font-weight: 300;
-	color: #ffd700;
-	padding: 0;
-	margin: 0;
-}
 /* width */
 ::-webkit-scrollbar {
   width: 20px;
@@ -74,7 +61,6 @@ h1{
     background: -ms-linear-gradient(45deg, rgba(255,0,223,1) 0%, rgba(255,255,0,1) 100%);
     background: linear-gradient(45deg, rgba(255,0,223,1) 0%, rgba(255,255,0,1) 100%);
 }
-
 @media screen and (max-width: 1200px) {
 	.mainContainer {
 		grid-template-columns: 1;
@@ -88,7 +74,6 @@ h1{
 		align-items: center;
 	}
 }
-
 @media screen and (max-width: 350px) {
   .searchDiv {
 	width: 250px;

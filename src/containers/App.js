@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardList2 from '../components/CardList2';
 import NavTabs from '../components/NavTabs';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import IndiCard from '../components/IndiCard';
 import ReactGA from 'react-ga';
 import './App.css';
@@ -22,7 +23,8 @@ class App extends Component {
 			route: 'home',
 			searchfield: '',
 			indiCard: false,
-			cardNum: 0
+			cardNum: 0,
+			scrollPosition: 0
 		}
 	}
 	componentDidMount() {
@@ -37,11 +39,9 @@ class App extends Component {
 
 	requestIndiCard = (value, item) => {
 		if (value){
-			this.setState({indiCard: value, cardNum: item, route: this.state.route })
-			console.log(this.state.cardNum);
+			this.setState({cardNum: item, indiCard: value })
 		} else {
 			this.setState({indiCard: value, route: this.state.route })
-			console.log(this.state.cardNum);
 		}
 	}
 
@@ -51,15 +51,14 @@ class App extends Component {
 		searchPlaceHolder.value = '';
 		this.setState({searchfield: ''})
 		if (route==='home') {
-			this.setState({movies: this.state.allmovies}); 
+			this.setState({movies: this.state.allmovies, route: route});
 		} else {
 			const filteredRoute = this.state.allmovies.filter(movie =>{
 				return movie.contacts.department.includes(route);
 			});
-			this.setState({movies: filteredRoute});
+			this.setState({movies: filteredRoute, route: route});
+			this.scrollUp();
 		}
-		
-		this.scrollUp();
 	}
 
 	scrollUp() {
@@ -68,7 +67,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { searchfield, movies, indiCard, cardNum, allmovies } = this.state;
+		const { searchfield, movies, indiCard, cardNum } = this.state;
 		const filteredContacts = movies.filter(movie =>{
 			return movie.contacts.lastname.toLowerCase().includes(searchfield.trim().toLowerCase()) 
 				|| movie.contacts.firstname.toLowerCase().includes(searchfield.trim().toLowerCase())
@@ -87,17 +86,14 @@ class App extends Component {
 								<h1>No matches found. Try searching again!</h1>:
 								!indiCard 
 								? <CardList2  movies={filteredContacts} requestIndiCard={this.requestIndiCard} />
-								: <IndiCard {...allmovies[cardNum].contacts}
+								: <IndiCard {...filteredContacts[cardNum].contacts}
 									id={cardNum} 
 									requestIndiCard={this.requestIndiCard} />
 							}
 						</div>
 					}
 				</div>
-				<div className='footerDiv'>
-					<footer>Site created by: Yatrik Patel</footer>
-					<footer>Published on: June 4, 2019</footer>
-				</div>
+				<Footer />
 			</div>
 		);
 	}

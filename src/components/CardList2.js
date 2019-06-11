@@ -3,11 +3,11 @@ import Card from './Card';
 
 const CardList2 = ({ movies, requestIndiCard}) => {
 	return(
-		<div>
+		<div className="listParent">
 			{	
-				movies.map((movie,i) => {
+				movies.map((movie, i) => {
 					return 	(
-						<Card {...movie.contacts} requestIndiCard={requestIndiCard} key={i} itemNum={movie.contacts.id}/>
+						<Card {...movie.contacts} requestIndiCard={requestIndiCard} key={i} itemNum={i}/>
 					);
 				}) 
 			}

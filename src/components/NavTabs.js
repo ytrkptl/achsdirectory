@@ -26,7 +26,7 @@ class NavTabs extends Component {
 		for (var j = 0; j < dropgroup[0].children.length; j++){
 			dropgroup[0].children[j].style.backgroundColor = "#74b9ff"; 
 		}
-		if (route !== 'pe' && route !=='sped' && route!=='office' && route!=='assist' && route!=='other'){
+		if (route !== 'pe' && route !=='sped' && route!=='office' && route!=='assist' && route!=='other' && route!=='about' && route!=='admin'){
 			let x = document.getElementById(route);
 			x.style.backgroundColor = "#6c5ce7";
 		} else {
@@ -69,6 +69,8 @@ class NavTabs extends Component {
 						    <button href="#office" onClick={() => this.setTabColor('office', false)}>Office</button>
 						    <button href="#assist" onClick={() => this.setTabColor('assist', false)}>Assist</button>
 						    <button href="#other" onClick={() => this.setTabColor('other', false)}>Other</button>
+						    <button href="#about" onClick={() => this.setTabColor('about', false)}>About</button>
+							<button href="#admin" onClick={() => this.setTabColor('admin', false)}>Admin Portal</button>						
 						</div>
 					</div>
 				}
