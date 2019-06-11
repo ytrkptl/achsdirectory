@@ -3,7 +3,7 @@ import Card from './Card';
 
 const CardList2 = ({ movies, requestIndiCard}) => {
 	return(
-		<div>
+		<div className="listParent">
 			{	
 				movies.map((movie, i) => {
 					return 	(
