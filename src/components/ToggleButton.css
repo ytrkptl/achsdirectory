@@ -26,13 +26,13 @@ h4.switchLabel {
   margin-top: 8px;
 }
 
-input[type=checkbox]{
+.toggleDiv input[type=checkbox]{
   height: 0;
   width: 0;
   visibility: hidden;
 }
 
-label {
+.toggleDiv label {
   cursor: pointer;
   /*text-indent: -9999px;*/
   width: 60px;
@@ -43,7 +43,7 @@ label {
   position: relative;
 }
 
-label:after {
+.toggleDiv label:after {
   content: '';
   position: absolute;
   top: 15%;
@@ -55,11 +55,11 @@ label:after {
   transition: 0.3s;
 }
 
-input:checked + label {
+.toggleDiv input:checked + label {
   background: #74b9ff;
 }
 
-input:checked + label:after {
+.toggleDiv input:checked + label:after {
   left: calc(100% - 5px);
   transform: translateX(-100%);
 }

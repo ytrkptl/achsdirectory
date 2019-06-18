@@ -9,7 +9,15 @@ class NavTabs extends Component {
 			isActive: true, 
 			bgHome: "#6c5ce7",
 			isToggleOn: false,
-			pebg: "#74b9ff"
+			pebg: "#74b9ff",
+			dropdownTabNames: ['pe', 'sped', 'office', 'assist', 'other', 'about', 'admin'],
+			tabName: this.props.route
+		}
+	}
+
+	componentDidMount() {
+		if(this.props.route==='admin') {
+			this.setTabColor('admin', false)
 		}
 	}
 
@@ -26,7 +34,7 @@ class NavTabs extends Component {
 		for (var j = 0; j < dropgroup[0].children.length; j++){
 			dropgroup[0].children[j].style.backgroundColor = "#74b9ff"; 
 		}
-		if (route !== 'pe' && route !=='sped' && route!=='office' && route!=='assist' && route!=='other' && route!=='about' && route!=='admin'){
+		if (!this.state.dropdownTabNames.includes(route)){
 			let x = document.getElementById(route);
 			x.style.backgroundColor = "#6c5ce7";
 		} else {

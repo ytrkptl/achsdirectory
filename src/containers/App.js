@@ -4,6 +4,8 @@ import NavTabs from '../components/NavTabs';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import IndiCard from '../components/IndiCard';
+import AdminSignIn from '../components/Admin/AdminSignIn';
+import AdminTabs from '../components/Admin/AdminTabs';
 import ReactGA from 'react-ga';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -24,7 +26,10 @@ class App extends Component {
 			searchfield: '',
 			indiCard: false,
 			cardNum: 0,
-			scrollPosition: 0
+			scrollPosition: 0,
+			navMenu: false,
+			isAdmin: false,
+			adminRoute: 'adminHome'
 		}
 	}
 	componentDidMount() {
@@ -60,6 +65,17 @@ class App extends Component {
 			this.scrollUp();
 		}
 	}
+	adminRouteChange = (adminRoute) => {
+		this.setState({adminRoute: adminRoute});
+	}
+
+	onMenuChange = () => {
+		this.setState({navMenu: true, isAdmin: true})
+	}
+
+	logoutAdmin = () => {
+		this.setState({navMenu: false, isAdmin: false});
+	}
 
 	scrollUp() {
 		let element = document.getElementById("myDIV");
@@ -67,7 +83,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { searchfield, movies, indiCard, cardNum } = this.state;
+		const { searchfield, movies, indiCard, cardNum, route, navMenu, isAdmin} = this.state;
 		const filteredContacts = movies.filter(movie =>{
 			return movie.contacts.lastname.toLowerCase().includes(searchfield.trim().toLowerCase()) 
 				|| movie.contacts.firstname.toLowerCase().includes(searchfield.trim().toLowerCase())
@@ -77,20 +93,31 @@ class App extends Component {
 		return (
 			<div className='mainContainer'>
 				<Header className='headerDiv' searchChange={this.onSearchChange}/>
-				<NavTabs onRouteChange={this.onRouteChange} className='navDiv'/>
+				{
+					navMenu===true? <AdminTabs adminRouteChange={this.adminRouteChange} className='navDiv' logoutAdmin={this.logoutAdmin} />
+					: <NavTabs onRouteChange={this.onRouteChange} className='navDiv' route={route} />
+				}
 				<div id="myDIV" className='mainDiv'>
-					{!movies.length ?
-						<h1>Loading contacts...</h1>: 
-						<div>
-							{!filteredContacts.length?
-								<h1>No matches found. Try searching again!</h1>:
-								!indiCard 
-								? <CardList2  movies={filteredContacts} requestIndiCard={this.requestIndiCard} />
-								: <IndiCard {...filteredContacts[cardNum].contacts}
-									id={cardNum} 
-									requestIndiCard={this.requestIndiCard} />
-							}
-						</div>
+					{
+						route==='admin'? <AdminSignIn 	 
+														onMenuChange={this.onMenuChange} 
+														logoutAdmin={this.logoutAdmin} 
+														isAdmin={isAdmin}
+														adminRoute={this.state.adminRoute}/>
+						: (
+							!movies.length ?
+								<h1>Loading contacts...</h1>: 
+								<div>
+									{!filteredContacts.length?
+										<h1>No matches found. Try searching again!</h1>:
+										!indiCard 
+										? <CardList2  movies={filteredContacts} requestIndiCard={this.requestIndiCard} />
+										: <IndiCard {...filteredContacts[cardNum].contacts}
+											id={cardNum} 
+											requestIndiCard={this.requestIndiCard} />
+									}
+								</div>
+						)
 					}
 				</div>
 				<Footer />

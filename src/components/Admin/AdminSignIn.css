@@ -1,0 +1,44 @@
+.parentOfSignInForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+fieldset {
+  width: 200px;
+}
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+.emailLabel {
+  margin-top: 10px;
+}
+.signInForm input[type=email]{
+  margin: 10px;
+  height: 24px;
+  padding-left: 4px;
+}
+.signInForm input[type=password]{
+  margin: 10px;
+  height: 24px;
+  padding-left: 4px;
+}
+.signInForm input[type=submit]{
+  margin: 10px;
+  height: 30px;
+}
+#message {
+  color: #ff3232;
+}
+
+.AdminPortalButtons {
+  
+}
