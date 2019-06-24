@@ -30,23 +30,27 @@ class AdminSignIn extends Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
-    // fetch('https://achsdirectory-api.herokuapp.com/admin', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
+    if(this.state.signInEmail==='' || this.state.signInPassword==='') {
+      this.setState({message: 'Please enter valid email and password in the inputfiels above.'});
+    } else {
+      fetch('http://localhost:3000/signin', {
+      // fetch('https://achsdirectory-api.herokuapp.com/admin', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: this.state.signInEmail,
+          password: this.state.signInPassword
+        })
       })
-    })
-    .then(response => response.json())
-    .then(data => {
-       if (data==='success'){
-         this.props.onMenuChange();
-       } else {
-         this.setState({message: 'Incorrect credentials! Please try again.'})
-       }
-    })
+      .then(response => response.json())
+      .then(data => {
+         if (data==='success'){
+           this.props.onMenuChange();
+         } else {
+           this.setState({message: 'Incorrect credentials! Please try again.'})
+         }
+      })
+    }    
   }
 
   render() {

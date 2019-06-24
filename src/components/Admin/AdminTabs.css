@@ -41,3 +41,8 @@
   justify-content: center;
   width: 100%;
 }
+@media screen and (max-width: 400px) {
+  .btn-group2 button {
+    font-size: 10px;
+  }
+}

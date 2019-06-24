@@ -70,7 +70,7 @@ class App extends Component {
 	}
 
 	onMenuChange = () => {
-		this.setState({navMenu: true, isAdmin: true})
+		this.setState({navMenu: true, isAdmin: true, adminRoute: 'adminHome'})
 	}
 
 	logoutAdmin = () => {
