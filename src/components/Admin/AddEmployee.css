@@ -60,29 +60,35 @@ input[type=number]::-webkit-outer-spin-button {
   width: 240px;
   padding-left: 4px;
 }
+.addForm input[type=tel]{
+  margin: 10px;
+  height: 24px;
+  width: 240px;
+  padding-left: 4px;
+}
 .addForm input[type=submit]{
   margin: 10px;
   height: 30px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 350px) {
   .addForm input[type=text]{
     width: 200px;
   }
   .addForm input[type=email]{
     width: 200px;
   }
-  .addForm input[type=number]{
+  .addForm input[type=tel]{
     width: 200px;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 300px) {
   .addForm input[type=text]{
     width: 180px;
   }
   .addForm input[type=email]{
     width: 180px;
   }
-  .addForm input[type=number]{
+  .addForm input[type=tel]{
     width: 180px;
   }
 }

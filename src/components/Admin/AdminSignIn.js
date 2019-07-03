@@ -31,7 +31,7 @@ class AdminSignIn extends Component {
 
   onSubmitSignIn = () => {
     if(this.state.signInEmail==='' || this.state.signInPassword==='') {
-      this.setState({message: 'Please enter valid email and password in the inputfiels above.'});
+      this.setState({message: 'Email and password cannot be blank.'});
     } else {
       fetch('http://localhost:3000/signin', {
       // fetch('https://achsdirectory-api.herokuapp.com/admin', {

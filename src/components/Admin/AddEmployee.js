@@ -11,7 +11,7 @@ class AddEmployee extends Component {
 			lastnameText: '',
 			firstnameText: '',
 			phoneNumText: '',
-			emailFirstInitial: '',
+      emailFirstInitial: '',
 			emailText: 'abc@gmail.com',
 			roomNumText: '',
 			departmentText: '',
@@ -27,44 +27,33 @@ class AddEmployee extends Component {
       phoneErrorMessage: ''//phone error will change based on input
 		}
 	}
-  //the onChangeListener function attached to the lastname input field
-	onLastnameChange = (event) => {
-		var lastname;
-    if (event.target.value) {
-      lastname = event.target.value.toLowerCase().trim();
-    } else {
-      lastname = 'bc';
-    }
-    this.setState((state)=>({lastnameText: lastname}));
+
+ //the onChangeListener function attached to the lastname input field
+  onLastnameChange = (event) => {
+    this.setState({lastnameText: event.target.value});
     //call the email field to be auto updated below using entire lastname
-		this.updateEmail();
-	}
-  //the onChangeListener function attached to the firstname input field
-	onFirstnameChange = (event) => {
-    let firstInitial, firstname;
-    firstname = event.target.value.toLowerCase().trim();
-    if (event.target.value) {
-      firstInitial = firstname.charAt(0);
-    } else {
-      firstInitial = 'a';
-    }
-		this.setState((state)=>({firstnameText: firstname, emailFirstInitial: firstInitial}));
-		//call the email field to be auto updated below using only first initial
     this.updateEmail();
-	}
-  //email field is readOnly. the following function updates the placeholder value of that field
-	//the format to use for school email is `${firstInitial}${lastname}@gmail.com``
-  updateEmail = () => {
-		this.setState((state) => ({
-		  emailText: `${state.emailFirstInitial}${state.lastnameText}@gmail.com`
-		}));
-	}
- //the onChangeListener function attached to the phone input field
-	onPhoneNumChange = (event) => {
-    let phoneNum = event.target.value;
-    this.setState((state)=>({phoneNumText: phoneNum}));
   }
-  ////the onChangeListener function attached to theire corresponding input fields
+  //the onChangeListener function attached to the firstname input field
+  onFirstnameChange = (event) => {
+    let firstname = event.target.value;
+    let firstInitial = firstname.charAt(0);
+    this.setState({firstnameText: firstname, emailFirstInitial: firstInitial});
+    //call the email field to be auto updated below using only first initial
+    this.updateEmail();
+  }
+  //email field is readOnly. the following function updates the placeholder value of that field
+  //the format to use for school email is `${firstInitial}${lastname}@gmail.com``
+  updateEmail = (state) => {
+    if(state.lastnameText!=='' && state.firstnameText!==''){
+      this.setState((state) => ({
+        emailText: `${state.emailFirstInitial}${state.lastnameText}@gmail.com`
+      }));
+    } else this.setState({emailText: 'abc@gmail.com'})
+  }
+
+  // the onChangeListener function attached to their corresponding input fields
+  onPhoneNumChange = (event) => {this.setState({phoneNumText: event.target.value})}
   onRoomNumChange = (event) => {this.setState({roomNumText: event.target.value})}
 	onDepartmentChange = (event) => {this.setState({departmentText: event.target.value})}
 	onFirstBlockChange = (event) => {this.setState({firstBlockText: event.target.value})}
@@ -77,11 +66,15 @@ class AddEmployee extends Component {
   validateForm = () => {
     //show error messages if lastname is empty
     if(this.state.lastnameText===''){
-      this.setState((state)=>({showFormError: true, showLastnameError: true}));
+      this.setState((state)=>({showLastnameError: true, showFormError: true}));
+    } else {
+      this.setState((state)=>({showLastnameError: false}));
     }
     //show error messages if firstname is empty
-    if(this.state.lastnameText===''){
-      this.setState((state)=>({showFormError: true, showFirstnameError: true}));
+    if(this.state.firstnameText===''){
+      this.setState((state)=>({showFirstnameError: true, showFormError: true}));
+    } else {
+      this.setState((state)=>({showFirstnameError: false}));
     }
     //if phonenumber is filled, make sure it's exactly 4 digits and
     //contains no letters
@@ -95,11 +88,21 @@ class AddEmployee extends Component {
         showPhoneError: true, 
         phoneErrorMessage: 'Phone extension should be exactly 4 digits long or leave the field blank.'
       }));
+    } else if(this.state.phoneNumText===''){
+        this.setState((state)=>({showPhoneError: false}))
+    } else {
+      fetch(`http://localhost:3000/checkphone/${this.state.phoneNumText}`)
+    // fetch('https://achsdirectory-api.herokuapp.com/')
+      .then(response=>response.json())
+      .then(answer => {
+          if (answer==='not a number') {this.setState((state)=>({showPhoneError: true, phoneErrorMessage: 'Only numbers are allowed'}))}
+        })
+      .catch(error =>this.setState((state)=>({showPhoneError: true, phoneErrorMessage: 'Check phone input field again'})))
     }
-    if(this.state.lastnameText!=='' && this.state.firstnameText!=='') {
-      this.setState((state)=>({showFormError: false, showLastnameError: false, showFirstnameError: false}));
+    
+    if (this.state.showFirstnameError && this.state.showLastnameError) {
+      return 'all clear';
     }
-    return; 
   }
 
   autoFillWithTBD = () => {
@@ -142,34 +145,39 @@ class AddEmployee extends Component {
   }
 
 	onAddEmployeeButton = async () => {
-    const step1 = await this.validateForm();
-    this.autoFillWithTBD();
-    fetch('http://localhost:3000/addemployee', {
-    // fetch('https://achsdirectory-api.herokuapp.com/admin', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-       	lastname: this.state.lastnameText,
-       	firstname: this.state.firstnameText,
-	      phone: this.state.phoneNumText,
-		    Room: this.state.roomNumText, 
-		    department: this.state.departmentText,
-		    firstblock: this.state.firstBlockText,
-		    secondblock: this.state.secondBlockText,
-		    thirdblock: this.state.thirdBlockText,
-		    fourthblock: this.state.fourthBlockText,
-		    lunch: this.state.lunchNumText,
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-       if (data==='success'){
-         console.log(data)
-       } else {
-         console.log('error')
-       }
-    })
-	}
+   let valid = await this.validateForm();
+   if (valid==='all clear') {
+     console.log('valid');
+   } else {
+     console.log('invalid');
+   }
+    // const response = fetch('http://localhost:3000/addemployee', {
+    //     // fetch('https://achsdirectory-api.herokuapp.com/admin', {
+    //       method: 'post',
+    //       headers: {'Content-Type': 'application/json'},
+    //       body: JSON.stringify({
+    //         lastname: this.state.lastnameText,
+    //         firstname: this.state.firstnameText,
+    //         phone: this.state.phoneNumText,
+    //         Room: this.state.roomNumText, 
+    //         department: this.state.departmentText,
+    //         firstblock: this.state.firstBlockText,
+    //         secondblock: this.state.secondBlockText,
+    //         thirdblock: this.state.thirdBlockText,
+    //         fourthblock: this.state.fourthBlockText,
+    //         lunch: this.state.lunchNumText,
+    //       })
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //        if (data==='success'){
+    //          console.log(data)
+    //        } else {
+    //          console.log('error')
+    //        }
+    //     })
+    // return response;
+  }
 
 render() {
 	return (
@@ -189,8 +197,8 @@ render() {
               onChange={this.onLastnameChange}
             />
             {
-            	!this.state.showFirstnameError? null
-            	: <p style={{color: '#ff3232', marginTop: '-10px'}}>Firstname is a required field.</p>
+            	!this.state.showLastnameError? null
+            	: <p style={{color: '#ff3232', marginTop: '-10px'}}>Lastname is a required field.</p>
             }
             <label htmlFor="firstname">Firstname*</label>
             <input 
@@ -201,10 +209,10 @@ render() {
               onChange={this.onFirstnameChange}
             />
             {
-            	!this.state.showLastnameError? null
-            	: <p style={{color: '#ff3232', marginTop: '-10px'}}>Lastname is a required field.</p>
+            	!this.state.showFirstnameError? null
+            	: <p style={{color: '#ff3232', marginTop: '-10px'}}>Firstname is a required field.</p>
             }
-            <label htmlFor="phone">Phone Extension</label>
+            <label htmlFor="phone">Phone Extension (4-digits only)</label>
             <input 
               type="number" 
               name="phone" 

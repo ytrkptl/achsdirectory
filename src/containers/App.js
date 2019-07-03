@@ -33,7 +33,8 @@ class App extends Component {
 		}
 	}
 	componentDidMount() {
-		fetch('https://achsdirectory-api.herokuapp.com/')
+		fetch('http://localhost:3000')
+		// fetch('https://achsdirectory-api.herokuapp.com/')
 		.then(response=>response.json())
 		.then(users => this.setState({ allmovies: users, movies: users }));
 	}
