@@ -11,7 +11,6 @@ class AddEmployee extends Component {
 			lastnameText: '',
 			firstnameText: '',
 			phoneNumText: '',
-      emailFirstInitial: '',
 			emailText: 'abc@gmail.com',
 			roomNumText: '',
 			departmentText: '',
@@ -28,32 +27,11 @@ class AddEmployee extends Component {
 		}
 	}
 
- //the onChangeListener function attached to the lastname input field
-  onLastnameChange = (event) => {
-    this.setState({lastnameText: event.target.value});
-    //call the email field to be auto updated below using entire lastname
-    this.updateEmail();
-  }
-  //the onChangeListener function attached to the firstname input field
-  onFirstnameChange = (event) => {
-    let firstname = event.target.value;
-    let firstInitial = firstname.charAt(0);
-    this.setState({firstnameText: firstname, emailFirstInitial: firstInitial});
-    //call the email field to be auto updated below using only first initial
-    this.updateEmail();
-  }
-  //email field is readOnly. the following function updates the placeholder value of that field
-  //the format to use for school email is `${firstInitial}${lastname}@gmail.com``
-  updateEmail = (state) => {
-    if(state.lastnameText!=='' && state.firstnameText!==''){
-      this.setState((state) => ({
-        emailText: `${state.emailFirstInitial}${state.lastnameText}@gmail.com`
-      }));
-    } else this.setState({emailText: 'abc@gmail.com'})
-  }
-
   // the onChangeListener function attached to their corresponding input fields
+  onLastnameChange = (event) => {this.setState({lastnameText: event.target.value})}
+  onFirstnameChange = (event) => {this.setState({firstnameText: event.target.value})}
   onPhoneNumChange = (event) => {this.setState({phoneNumText: event.target.value})}
+  onEmailChange = (event) => {this.setState({emailText: event.target.value})}
   onRoomNumChange = (event) => {this.setState({roomNumText: event.target.value})}
 	onDepartmentChange = (event) => {this.setState({departmentText: event.target.value})}
 	onFirstBlockChange = (event) => {this.setState({firstBlockText: event.target.value})}
@@ -64,45 +42,13 @@ class AddEmployee extends Component {
 
   //check if things are inputted as expected
   validateForm = () => {
-    //show error messages if lastname is empty
-    if(this.state.lastnameText===''){
-      this.setState((state)=>({showLastnameError: true, showFormError: true}));
-    } else {
-      this.setState((state)=>({showLastnameError: false}));
-    }
-    //show error messages if firstname is empty
-    if(this.state.firstnameText===''){
-      this.setState((state)=>({showFirstnameError: true, showFormError: true}));
-    } else {
-      this.setState((state)=>({showFirstnameError: false}));
-    }
-    //if phonenumber is filled, make sure it's exactly 4 digits and
-    //contains no letters
-    //a react bug accepts the letter 'e' when inputing into a number field
-    //based on Stack Overflow. However, although it allows typing the letter 'e'
-    //it return a value of '' due and ignores the entire input. 
-    let phoneNumText = this.state.phoneNumText.toString().trim();
-    if (phoneNumText.length!==0 && phoneNumText.length!==4) {
-      this.setState((state)=>({
-        showFormError: true,
-        showPhoneError: true, 
-        phoneErrorMessage: 'Phone extension should be exactly 4 digits long or leave the field blank.'
-      }));
-    } else if(this.state.phoneNumText===''){
-        this.setState((state)=>({showPhoneError: false}))
-    } else {
-      fetch(`http://localhost:3000/checkphone/${this.state.phoneNumText}`)
+    fetch(`http://localhost:3000/checkphone/${this.state.phoneNumText}`)
     // fetch('https://achsdirectory-api.herokuapp.com/')
       .then(response=>response.json())
       .then(answer => {
           if (answer==='not a number') {this.setState((state)=>({showPhoneError: true, phoneErrorMessage: 'Only numbers are allowed'}))}
         })
       .catch(error =>this.setState((state)=>({showPhoneError: true, phoneErrorMessage: 'Check phone input field again'})))
-    }
-    
-    if (this.state.showFirstnameError && this.state.showLastnameError) {
-      return 'all clear';
-    }
   }
 
   autoFillWithTBD = () => {
@@ -144,12 +90,10 @@ class AddEmployee extends Component {
     })
   }
 
-	onAddEmployeeButton = async () => {
-   let valid = await this.validateForm();
+	onAddEmployeeButton = () => {
+   let valid = this.validateForm();
    if (valid==='all clear') {
      console.log('valid');
-   } else {
-     console.log('invalid');
    }
     // const response = fetch('http://localhost:3000/addemployee', {
     //     // fetch('https://achsdirectory-api.herokuapp.com/admin', {
@@ -226,12 +170,12 @@ render() {
               !this.state.showPhoneError? null
               : <p style={{color: '#ff3232', marginTop: '-10px'}}>{this.state.phoneErrorMessage}</p>
             }
-            <label htmlFor="email">Email (auto-gen/read-only)</label>
+            <label htmlFor="email">Email</label>
             <input 
               type="email" 
               name="email" 
-              readOnly
-              placeholder={this.state.emailText}
+              placeholder="abc@gmail.com"
+              onChange={this.onEmailChange}
             />
             <label htmlFor="room">Room Number (main)</label>
             <input 

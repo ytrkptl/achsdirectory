@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import IndiCard from '../components/IndiCard';
 import AdminSignIn from '../components/Admin/AdminSignIn';
 import AdminTabs from '../components/Admin/AdminTabs';
+import AboutCard from '../components/AboutCard';
 import ReactGA from 'react-ga';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -33,8 +34,8 @@ class App extends Component {
 		}
 	}
 	componentDidMount() {
-		fetch('http://localhost:3000')
-		// fetch('https://achsdirectory-api.herokuapp.com/')
+		// fetch('http://localhost:3000')
+		fetch('https://achsdirectory-api.herokuapp.com/')
 		.then(response=>response.json())
 		.then(users => this.setState({ allmovies: users, movies: users }));
 	}
@@ -107,7 +108,10 @@ class App extends Component {
 														adminRoute={this.state.adminRoute}/>
 						: (
 							!movies.length ?
-								<h1>Loading contacts...</h1>: 
+								
+									(route==='about'? <AboutCard />:
+										<h1>Loading contacts...</h1>)
+								: 
 								<div>
 									{!filteredContacts.length?
 										<h1>No matches found. Try searching again!</h1>:

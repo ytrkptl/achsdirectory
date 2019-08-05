@@ -163,6 +163,14 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+.AboutCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #ff69b4;
+	text-align: justify;
+}
 @media screen and (max-width: 500px) {
 	.listParent {
 		margin: 0px 40px 0px 0px;
