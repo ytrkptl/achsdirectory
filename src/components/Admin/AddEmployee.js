@@ -42,8 +42,7 @@ class AddEmployee extends Component {
 
   //check if things are inputted as expected
   validateForm = () => {
-    fetch(`http://localhost:3000/checkphone/${this.state.phoneNumText}`)
-    // fetch('https://achsdirectory-api.herokuapp.com/')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/checkphone/${this.state.phoneNumText}`)
       .then(response=>response.json())
       .then(answer => {
           if (answer==='not a number') {this.setState((state)=>({showPhoneError: true, phoneErrorMessage: 'Only numbers are allowed'}))}

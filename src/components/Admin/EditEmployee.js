@@ -27,7 +27,7 @@ class EditEmployee extends Component {
 		this.setState({ firstname: event.target.value })
 	}
 	searchLastnames = (event) => {
-		 fetch(`http://localhost:3000/findemployeeid/${this.state.lastname}`)
+		 fetch(`${process.env.REACT_APP_BACKEND_URL}/findemployeeid/${this.state.lastname}`)
 		// fetch('https://achsdirectory-api.herokuapp.com/')
 			.then(response=>response.json())
 			.then(users => {
@@ -36,14 +36,14 @@ class EditEmployee extends Component {
 			.catch(error=>console.log(error))
 	}
 	searchFirstnames = (event) => {
-		 fetch(`http://localhost:3000/findemployeeid/none/${this.state.firstname}`)
+		 fetch(`${process.env.REACT_APP_BACKEND_URL}/findemployeeid/none/${this.state.firstname}`)
 		// fetch('https://achsdirectory-api.herokuapp.com/')
 			.then(response=>response.json())
 			.then(users => this.setState({ message: users.message, details: users.arrayTwo}))
 			.catch(error=>console.log(error))
 	}
 	searchBothnames = (event) => {
-		 fetch(`http://localhost:3000/findemployeeid/${this.state.lastname}/${this.state.firstname}`)
+		 fetch(`${process.env.REACT_APP_BACKEND_URL}/findemployeeid/${this.state.lastname}/${this.state.firstname}`)
 		// fetch('https://achsdirectory-api.herokuapp.com/')
 			.then(response=>response.json())
 			.then(users => this.setState({ message: users.message, details: users.arrayTwo}))
