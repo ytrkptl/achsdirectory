@@ -7,7 +7,7 @@ const Header = ({searchChange}) => {
 	return (
 			<div className="headerContainer">
 				<div className="row1">
-					<a href="/home" style={{textDecoration: "none"}}><h1 className='makeFontBigger2'>ACHS Directory</h1></a>
+					<a href="/" style={{textDecoration: "none"}}><h1 className='makeFontBigger2'>ACHS Directory</h1></a>
 					<p className="phoneLabel">123-456-ext.</p>
 				</div>
 				<div className="searchSwitchContainer"> 
