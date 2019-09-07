@@ -11,19 +11,12 @@ const IndiCard  = ({requestIndiCard, lastname, firstname, email, phone, id, url,
 				<div className="gridItNow">
 					<div className='subCardDetails growCard'>
 						<div className='indiImgContainer'>
-							<div className='indiFlip-card-inner'>
-								<div className='indiFlip-card-front'>
-									<img className="indiImgRounded" alt='robots' src={`https://robohash.org/${firstname + lastname}?size=133x170&set=set2&bgset=bg1`} />
-								</div>
-								<div className='indiFlip-card-back'>
-									<img className="indiImgRounded" alt='robots' src={url} />
-								</div>
-							</div>
+							<img className="indiImgRounded" alt='robots' src={url} />
 						</div>
 						<div className="underTextContainer">
-							<h3 className="subjectTitle">{name}</h3>
-							<p className="phoneTitle">{phone}</p>
-							<p className="emailTitle">{email}</p>
+							<h3 className="subjectTitle2">{name}</h3>
+							<p className="phoneTitle2">{phone}</p>
+							<p className="emailTitle2">{email}</p>
 						</div>
 					</div>
 					<div className="indiTextContainer">

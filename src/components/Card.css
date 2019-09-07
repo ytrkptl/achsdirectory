@@ -9,6 +9,7 @@
 	margin: 20px;
 	background-color: black;
 	align-items: center;
+	cursor: pointer;
 }
 .imgContainer {
 	border-top-right-radius: 25px;
@@ -26,7 +27,7 @@
 	display: flex;
 	flex-direction: column;
 	color: white;
-	font-family: 'Comic Sans MS', 'Arial', 'sans', 'sans-serif';
+	font-family: Comic Sans MS, Arial, sans, sans-serif;
 	justify-content: center;
 	align-items: center;
 	height: 38px;
@@ -34,6 +35,7 @@
 	white-space: nowrap;
 	margin: 4px 0px 8px 0px;
 	padding: 0px;
+	cursor: pointer;
 }
 .subjectTitle {
   color: #808080;
@@ -55,33 +57,6 @@
   margin: -4px 0px 0px 4px;
   padding: 0px;
 }
- /*This container is needed to position the front and back side */
-.flip-card-inner {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: all 0.1s ease;
-  transform-style: preserve-3d;
-}
- /*Do an horizontal flip when you move the mouse over the flip box container */
-.imgContainer:hover .flip-card-inner {
-  transition: all 0.8s ease-in-out;
-  transform: rotateY(180deg);
-}
- /*Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  backface-visibility: hidden;
-}
-
- /*Style the front side (fallback if image is missing) */
-.flip-card-front {
-	border-top-right-radius: 25px;
-	border-top-left-radius: 25px;
-	height: 100%;
-	width: 100%;
-	background-color: #808080;
-}
 .imgRounded {
 	border-top-right-radius: 25px;
 	border-top-left-radius: 25px;
@@ -89,81 +64,8 @@
 	width: 100%;
 	background-color: #808080;
 }
- /*Style the back side */
-.flip-card-back {
-  border-top-right-radius: 25px;
-	border-top-left-radius: 25px;
-	height: 100%;
-	width: 100%;
-	background-color: #808080;
-	transition: all 0.4s ease-in-out;
-  transform: rotateY(180deg);
-}
-
-.buttonStyle2 {
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
-
-/* .growCard { transition: all .2s ease-in-out; }
-.growCard:hover { transform: scale(1.1);} */
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.textContainer .divtry {
-	visibility: hidden;
-	border-bottom-right-radius: 25px;
-	border-bottom-left-radius: 25px;
-	display: flex;
-	height: 60px;
-	width: 170px;
-	background-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
-	color: #fff; 
-	margin-bottom: -20px;
-	position: absolute;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-
-.textContainer:hover .divtry {
-	visibility: visible;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  height: 50%;
-  width: 30%;
-  background-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  white-space: normal;
-  z-index: 1;
-  top: 0px;
-  left: 90%;
-}
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -10px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent gold transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
+.growCard2 { transition: all .2s ease-in-out; }
+.growCard2:hover { transform: scale(1.1);}
 
 .AboutCard {
 	display: flex;
@@ -173,9 +75,9 @@
 	color: #ff69b4;
 	text-align: justify;
 }
-
-@media screen and (max-width: 500px) {
-
+@media screen and (max-width: 900px) {
+	.growCard2 { transition: none; }
+	.growCard2:hover { transform: none;}
 }
 
 @media screen and (max-width: 500px) {
@@ -209,22 +111,9 @@
 	.emailTitle {
 	  font-size: 8px;
 	  margin: -2px 0px 0px 0px;
-
-	}
-	.flip-card-front {
-		border-top-right-radius: 15px;
-		border-top-left-radius: 15px;
 	}
 	.imgRounded {
 		border-top-right-radius: 15px;
 		border-top-left-radius: 15px;
-	}
-	 /*Style the back side */
-	.flip-card-back {
-	  border-top-right-radius: 15px;
-		border-top-left-radius: 15px;
-	}
-	.textContainer .divtry {
-		display: none;
 	}
 }

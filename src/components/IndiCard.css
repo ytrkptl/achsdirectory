@@ -51,6 +51,13 @@
 	align-items: center;
 	perspective: 3000px;
 }
+.indiImgRounded {
+	border-top-right-radius: 25px;
+	border-top-left-radius: 25px;
+	height: 100%;
+	width: 100%;
+	background-color: #808080;
+}
 .underTextContainer {
 	display: flex;
 	flex-direction: column;
@@ -64,6 +71,26 @@
 	margin: 4px 0px 8px 0px;
 	padding: 0px;
 }
+.subjectTitle2 {
+  color: #808080;
+  font-size: 16px;
+  margin: -4px 0px -2px 0px;
+  padding: 0px;
+}
+.phoneTitle2 {
+  color: white;
+  font-size: 16px;
+  white-space: nowrap;
+  margin: 0px;
+  padding: 0px;
+}
+.emailTitle2 {
+  color: white;
+  font-size: 16px;
+  white-space: nowrap;
+  margin: -4px 0px 0px 4px;
+  padding: 0px;
+}
 .indiTextContainer {
 	display: flex;
 	flex-direction: column;
@@ -71,27 +98,6 @@
 	font-family: "Comic Sans MS", sans-serif;
 	justify-content: center;
 	align-items: center;
-}
-.subColumn {
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: auto auto;
-	justify-content: center;
-	align-items: center;
-}
-
-.indiSubjectTitle {
-  color: black;
-  font-size: 16px;
-  margin: -4px 0px -2px 0px;
-  padding: 0px;
-}
-.indiPhoneTitle {
-  color: black;
-  font-size: 16px;
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
 }
 .indiEmailTitle {
   color: black;
@@ -107,6 +113,13 @@
   white-space: nowrap;
   margin: -4px 0px 8px 4px;
   padding: 0px;
+}
+.subColumn {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: auto auto;
+	justify-content: center;
+	align-items: center;
 }
 .indiLeftCol {
   color: black;
@@ -125,51 +138,6 @@
   padding: 0px;
   text-align: left;
 }
- /*This container is needed to position the front and back side */
-.indiFlip-card-inner {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.1s;
-  transform-style: preserve-3d;
-}
- /*Do an horizontal flip when you move the mouse over the flip box container */
-.indiImgContainer:hover .indiFlip-card-inner {
-  transition: transform 0.8s;
-  transform: rotateY(180deg);
-}
- /*Position the front and back side */
-.indiFlip-card-front, .indiFlip-card-back {
-  position: absolute;
-  backface-visibility: hidden;
-}
-
- /*Style the front side (fallback if image is missing) */
-.indiFlip-card-front {
-	border-top-right-radius: 25px;
-	border-top-left-radius: 25px;
-	height: 100%;
-	width: 100%;
-	background-color: #808080;
-}
-.indiImgRounded {
-	border-top-right-radius: 25px;
-	border-top-left-radius: 25px;
-	height: 100%;
-	width: 100%;
-	background-color: #808080;
-}
- /*Style the back side */
-.indiFlip-card-back {
-  	border-top-right-radius: 25px;
-	border-top-left-radius: 25px;
-	height: 100%;
-	width: 100%;
-	background-color: #808080;
-	transition: transform 0.4s;
-  	transform: rotateY(180deg);
-}
-
 .buttonStyle {
 	color: #ffffff;
 	background-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
@@ -180,7 +148,6 @@
 	transition: all 0.2s ease-in-out;
 	margin: auto;
 }
-
 .buttonStyle:hover {
 	color: #ffffff;
 	background-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
@@ -190,36 +157,39 @@
 .growCard { transition: all .2s ease-in-out; }
 .growCard:hover { transform: scale(1.1); }
 
+@media screen and (max-width: 900px) {
+	.buttonStyle {
+		color: #ffffff;
+		background-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
+		height: 40px;
+		padding: 0px 20px;
+		border: 2px solid #000000;
+		border-radius: 6px;
+		transition: none;
+		margin: auto;
+		outline: none;
+	}
+	.buttonStyle:hover {
+		border: 2px solid #000000;
+		transform: none;
+	}
+	.growCard { transition: none; }
+	.growCard:hover { transform: none; }
+}
+
 @media screen and (max-width: 500px) {
 	.indiCardDetails {
 		border-radius: 15px;
 		margin: 4px;
 	}
 	.indiImgContainer {
-		/*height: 83px;*/
 		width: 170px;
-	}
-	.indiSubjectTitle {
-	  font-size: 10px;
-	  margin: -2px 0px 0px 0px;
-	}
-	.indiPhoneTitle {
-	  font-size: 10px;
 	}
 	.indiEmailTitle {
 	  margin: -2px 0px 0px 0px;
 	}
-	.indiFlip-card-front {
-		border-top-right-radius: 15px;
-		border-top-left-radius: 15px;
-	}
 	.indiImgRounded {
 		border-top-right-radius: 15px;
-		border-top-left-radius: 15px;
-	}
-	 /*Style the back side */
-	.flip-card-back {
-	  	border-top-right-radius: 15px;
 		border-top-left-radius: 15px;
 	}
 }
