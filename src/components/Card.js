@@ -4,7 +4,7 @@ import './Card.css';
 const Card  = ({ requestIndiCard, lastname, firstname, email, phone, url, itemNum}) => {
 	let name = firstname + ' ' + lastname;
 	return (
-		<div className='CardDetails growCard'>
+		<div className='CardDetails'>
 			<div className='imgContainer'>
 				<div className='flip-card-inner'>
 					<div className='flip-card-front'>
