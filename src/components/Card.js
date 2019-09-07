@@ -6,14 +6,14 @@ const Card  = ({ requestIndiCard, lastname, firstname, email, phone, url, itemNu
 	return (
 		<div className='CardDetails'>
 			<div className='imgContainer'>
-				<div className='flip-card-inner'>
-					<div className='flip-card-front'>
+				{/* <div className='flip-card-inner'>
+					<div className='flip-card-front'> */}
 						<img className="imgRounded" alt='robots' src={`https://robohash.org/${firstname + lastname}?size=133x170&set=set2&bgset=bg1`} />
-					</div>
-					<div className='flip-card-back'>
+					{/* </div> */}
+					{/* <div className='flip-card-back'>
 						<img className="imgRounded" alt='robots' src={url} />
-					</div>
-				</div>
+					</div> */}
+				{/* </div> */}
 			</div>
 			<button onClick={()=>requestIndiCard(true, itemNum)} className="buttonStyle2">
 				<div className="textContainer">
