@@ -63,7 +63,7 @@ class App extends Component {
 				return movie.contacts.department.includes(route);
 			});
 			this.setState({movies: filteredRoute, route: route});
-			this.scrollUp();
+			// this.scrollUp();
 		}
 	}
 	adminRouteChange = (adminRoute) => {

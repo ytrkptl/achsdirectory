@@ -91,13 +91,13 @@
 }
  /*Style the back side */
 .flip-card-back {
-  	border-top-right-radius: 25px;
+  border-top-right-radius: 25px;
 	border-top-left-radius: 25px;
 	height: 100%;
 	width: 100%;
 	background-color: #808080;
 	transition: transform 0.4s;
-  	transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .buttonStyle2 {
@@ -160,9 +160,11 @@
   border-style: solid;
   border-color: transparent gold transparent transparent;
 }
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
 .AboutCard {
 	display: flex;
 	flex-direction: column;
@@ -171,6 +173,7 @@
 	color: #ff69b4;
 	text-align: justify;
 }
+
 @media screen and (max-width: 500px) {
 	.listParent {
 		margin: 0px 40px 0px 0px;
@@ -214,7 +217,7 @@
 	}
 	 /*Style the back side */
 	.flip-card-back {
-	  	border-top-right-radius: 15px;
+	  border-top-right-radius: 15px;
 		border-top-left-radius: 15px;
 	}
 	.textContainer .divtry {
