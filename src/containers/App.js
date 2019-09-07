@@ -8,9 +8,9 @@ import AdminSignIn from '../components/Admin/AdminSignIn';
 import AdminTabs from '../components/Admin/AdminTabs';
 import AboutCard from '../components/AboutCard';
 import ReactGA from 'react-ga';
-import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCaretDown, faBars } from '@fortawesome/free-solid-svg-icons'
+import './App.css';
 
 library.add(faCaretDown, faBars)
 
@@ -63,7 +63,7 @@ class App extends Component {
 				return movie.contacts.department.includes(route);
 			});
 			this.setState({movies: filteredRoute, route: route});
-			// this.scrollUp();
+			this.scrollUp();
 		}
 	}
 	adminRouteChange = (adminRoute) => {
