@@ -8,10 +8,12 @@ class EditEmployee extends Component {
 		this.state = {
 			message: '',
 			details: [],
+			obj: {},
 			lastname: '',
 			firstname: ''
 		}
 	}
+
 	componentDidMount() {
 		// fetch('http://localhost:3000')
 		// fetch('https://achsdirectory-api.herokuapp.com/')
@@ -31,7 +33,11 @@ class EditEmployee extends Component {
 		// fetch('https://achsdirectory-api.herokuapp.com/')
 			.then(response=>response.json())
 			.then(users => {
-				this.setState({ message: users.message, details: users.arrayTwo})
+				let someArray = []
+				for(let i = 0; i < users.arrayTwo.length; i++) {
+					someArray.push(users.arrayTwo[i])
+				}
+				this.setState({ message: users.message, details: someArray})
 			})
 			.catch(error=>console.log(error))
 	}
@@ -61,6 +67,7 @@ class EditEmployee extends Component {
 		              name="lastname" 
 		              placeholder="Lastname" 
 		              required
+		              autoFocus={true}
 		              onChange={this.onLastnameChange}
 		            />
 		            <button id="lastnameFindBtn" onClick={(event)=>this.searchLastnames()}>Search by Lastname Only</button>
@@ -77,14 +84,77 @@ class EditEmployee extends Component {
 		            />
 		            <button id="firstnameFindBtn" onClick={(event)=>this.searchFirstnames()}>Search by Firstname Only</button>
 	            </div>
-	            <button id="bothFindBtn" onClick={(event)=>this.searchBothnames()}>Search by Lastname and Firstname</button>
-	            <div>
-	            	{this.state.message}
+	            <button id="bothFindBtn" onClick={(event)=>this.searchBothnames(event)}>Search by Lastname and Firstname</button>
+	            <div className="customEditMessage">
+	            	{
+	            		this.state.message!=='' &&
+	            		this.state.message
+	            	}
 	            </div>
 	            <div>
-	            	{this.state.details.map((el, index)=>{
-	            		return <div key={index}>{el.arrayTwo}</div>
-	            	})}
+	            	{
+	            		this.state.details.length!==0 &&
+	            		this.state.details.map((el, index) => {
+	            			return (
+	            				<div key={index} >
+	            					{ 
+	            						index===0 && 
+	            						<div className="customEditTable">
+	            							<span>recordId</span>
+	            							<span>Details</span>
+	            						</div> 
+	            					}
+	            					{ 
+	            						<div className="customEditTable">
+	            							<span className="customEditTableCol1">{el.id}</span>
+	            							<div className="formClass">
+		            								<form>
+		            								{
+			            								Object.keys(el.contacts).map((el2,index2)=>
+				            								<input
+				            									className="customEditInput"
+				            									key={index2}
+			            										value={el2}
+			            									  type="text"
+			            									  onChange={(event)=>console.log(event.target.value)}
+			            									/>
+				            							)
+		            								}
+		            								<button>edit</button>
+		            								</form>
+		            								<form className="">
+		            								{
+			            								Object.values(el.contacts).map((el3,index3)=>
+				            								<input
+				            									className="customEditInput"
+				            									key={index3}
+			            										value={el3}
+			            									  type="text"
+			            									  onChange={(event)=>console.log(event.target.value)}
+			            									/>
+				            							)
+		            								}
+		            								<button>edit</button>
+		            								</form>
+	            							</div>
+	            						</div> 
+	            					}
+									 		</div>
+	            			)
+	            		})
+	            	
+									// Object.values(this.state.details.contacts).map((el, index)=>{
+									// 	return (
+									// 		<div key={index} className="customEditTable">
+									// 			<span>{el}</span>
+									// 			<div>
+									// 				{el}
+									// 			</div>
+									// 		</div>
+									// 	)
+									// })
+									// console.log(Object.keys(this.state.details[0].contacts))
+	            	}
 	            </div>
 			</div>
 		);

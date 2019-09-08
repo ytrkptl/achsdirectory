@@ -33,8 +33,7 @@ class AdminSignIn extends Component {
     if(this.state.signInEmail==='' || this.state.signInPassword==='') {
       this.setState({message: 'Email and password cannot be blank.'});
     } else {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/signin`, {
-      // fetch('https://achsdirectory-api.herokuapp.com/admin', {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/adminsignin`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
