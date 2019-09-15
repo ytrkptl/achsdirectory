@@ -14,7 +14,7 @@ import './App.css';
 
 library.add(faCaretDown, faBars)
 
-ReactGA.initialize('UA-139848771-3');
+ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
