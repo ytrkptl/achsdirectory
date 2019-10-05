@@ -10,7 +10,7 @@ const Footer = () => {
 				<p>Site created by: Yatrik Patel</p>
 				<div className="footerChildDiv">
 					<p>Published on: June 4, 2019</p>
-					<p>{`Updated on: ${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`}</p>
+					<p>Updated on: October 5, 2019</p>
 				</div>
 			</div>
 	);
