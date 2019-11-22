@@ -8,12 +8,12 @@ const AboutCard  = () => {
 				You might be wondering what ACHS stands for?
 			</p>
 			<p className="AboutCard"> 
-				Well, it's just dummy
+				{`Well, it's just dummy
 				initials for a school I would like to call 'Awesome County High School.'
 				Here you can search for the wonderful faculty and staff that works here, 
 				including the ability to see their schedule, email, phone extension 
 				and a profile photo. Click on the robots to see the teacher's 
-				actual photo.
+				actual photo (to be updated).`}
 			</p>
 			<p className="AboutCard">
 				Admins can also add, view, edit, and delete employees.
