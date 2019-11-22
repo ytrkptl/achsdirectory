@@ -28,7 +28,7 @@ class NavTabs extends Component {
 		}
 		let buttonGroup = document.getElementsByClassName('btn-group');
 		for (var i = 0; i < buttonGroup[0].children.length; i++){
-			buttonGroup[0].children[i].style.backgroundColor = "#74b9ff"; 
+			buttonGroup[0].children[i].style.backgroundColor = "#74b9ff";
 		}
 		let dropgroup = document.getElementsByClassName('dropgroup');
 		for (var j = 0; j < dropgroup[0].children.length; j++){
@@ -41,6 +41,7 @@ class NavTabs extends Component {
 			this.setState({isToggleOn: false, pebg: "#6c5ce7"})
 		}
 	}
+
 	toggleDropdown = () => {
 		if (!this.state.isToggleOn){
 			this.setState({isToggleOn: true})
@@ -49,16 +50,28 @@ class NavTabs extends Component {
 		}
 	}
 
+	addBackgroundOnEnter = (num) => {
+		document.getElementById(num).style.backgroundColor = "#6c5ce7"
+	}
+
+	removeBackgroundOnLeave = (num) => {
+		if(this.props.route===num) {
+			document.getElementById(num).style.backgroundColor = "#6c5ce7"
+		} else {
+			document.getElementById(num).style.backgroundColor = "#74b9ff"
+		}
+	}
+
 	render() {
 		return (
 			<div className='btn-group'>
-				<button style={{backgroundColor: this.state.bgHome}} id="home" onClick={()=>this.setTabColor('home', true)} href="#home">ACHS</button>
-				<button id="math" onClick={()=> this.setTabColor('math', false)} href="#math">Math</button>
-				<button id="science" onClick={() => this.setTabColor('science', false)} href="#science">Science</button>
-				<button id="socialstudies" onClick={() => this.setTabColor('socialstudies', false)} href="#socialstudies">Social Studies</button>
-				<button id="english"  onClick={() => this.setTabColor('english', false)} href="#english">English</button>
-				<button id="voc" onClick={() => this.setTabColor('voc', false)} href="#voc">VOC</button>
-				<button id="cougarcenter" onClick={() => this.setTabColor('cougarcenter', false)} href="#cougarcenter">Cougar Center</button>
+				<button style={{backgroundColor: this.state.bgHome}} id="home" onClick={()=>this.setTabColor('home', true)} onMouseEnter={()=>this.addBackgroundOnEnter("home")} onMouseLeave={()=>this.removeBackgroundOnLeave("home")} href="#home">ACHS</button>
+				<button id="math" onClick={()=> this.setTabColor('math', false)} onMouseEnter={()=>this.addBackgroundOnEnter("math")} onMouseLeave={()=>this.removeBackgroundOnLeave("math")} href="#math">Math</button>
+				<button id="science" onClick={() => this.setTabColor('science', false)} onMouseEnter={()=>this.addBackgroundOnEnter("science")} onMouseLeave={()=>this.removeBackgroundOnLeave("science")} href="#science">Science</button>
+				<button id="socialstudies" onClick={() => this.setTabColor('socialstudies', false)} onMouseEnter={()=>this.addBackgroundOnEnter("socialstudies")} onMouseLeave={()=>this.removeBackgroundOnLeave("socialstudies")} href="#socialstudies">Social Studies</button>
+				<button id="english"  onClick={() => this.setTabColor('english', false)} onMouseEnter={()=>this.addBackgroundOnEnter("english")} onMouseLeave={()=>this.removeBackgroundOnLeave("english")} href="#english">English</button>
+				<button id="voc" onClick={() => this.setTabColor('voc', false)} onMouseEnter={()=>this.addBackgroundOnEnter("voc")} onMouseLeave={()=>this.removeBackgroundOnLeave("voc")} href="#voc">VOC</button>
+				<button id="cougarcenter" onClick={() => this.setTabColor('cougarcenter', false)} onMouseEnter={()=>this.addBackgroundOnEnter("cougarcenter")} onMouseLeave={()=>this.removeBackgroundOnLeave("cougarcenter")} href="#cougarcenter">Cougar Center</button>
 				{
 					!this.state.isToggleOn?
 					<div className="dropgroup">

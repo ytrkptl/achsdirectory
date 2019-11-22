@@ -12,7 +12,7 @@ const AboutCard  = () => {
 				initials for a school I would like to call 'Awesome County High School.'
 				Here you can search for the wonderful faculty and staff that works here, 
 				including the ability to see their schedule, email, phone extension 
-				and a profile photo. Hover on the robots to see the teacher's 
+				and a profile photo. Click on the robots to see the teacher's 
 				actual photo.
 			</p>
 			<p className="AboutCard">
@@ -32,7 +32,7 @@ const AboutCard  = () => {
 				"Go Hippos" or "Go Cows"??
 			</h4>
 			<p className="AboutCard" style={{color: "#74b9ff"}}>
-				Okay, 
+				Okay 
 			</p>
 		</div>
 	);

@@ -33,7 +33,6 @@
 .dropdown {
   display: flex;
   flex-direction: column;
-  background-color: #fd79a8;
   justify-content: flex-start;
   margin-top: -38px;
 }
@@ -50,9 +49,7 @@
   margin: 0;
   width: auto /* Important for vertical align on mobile phones */
 }
-.dropdown .dropbtninactive {
-  background-color: #fd79a8;
-}
+
 .dropdown-content {
   display: block;
   flex-direction: column;
@@ -67,10 +64,6 @@
   display: block;
   justify-content: center;
   align-items: center;
-}
-
-.dropdown-content .dropbtn:hover {
-  background-color: #e84393;
 }
 
 .dropdown:hover .dropdown-content {
@@ -93,6 +86,6 @@
   #hamburger, #hamburger2 {
     display: flex;
     justify-content: center;
-    background-color: #fd79a8;
+    align-items: center;
   }
 }
