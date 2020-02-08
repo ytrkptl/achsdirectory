@@ -24,7 +24,7 @@ h4.switchLabel {
   display: grid;
   justify-content: center;
   align-items: center;
-  margin-top: 0px;
+  margin-top: -10px;
 }
 
 .toggleDiv input[type=checkbox]{
