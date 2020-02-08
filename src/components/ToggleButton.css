@@ -7,8 +7,8 @@
 	margin: 10px;
 	height: 38px;
 	padding-top: 3px;
-
 }
+
 h4.switchLabel {
 	display: flex;
 	justify-content: center;
@@ -24,7 +24,7 @@ h4.switchLabel {
   display: grid;
   justify-content: center;
   align-items: center;
-  margin-top: -10px;
+  margin-top: 0px;
 }
 
 .toggleDiv input[type=checkbox]{
@@ -73,6 +73,7 @@ h4.switchLabel {
   left: 0;
   z-index: -1;
 }
+
 @media screen and (max-width: 1200px) {
 	.switchContainer {
 		display: flex;
@@ -80,19 +81,22 @@ h4.switchLabel {
 		align-items: center;
     justify-content: center;
     justify-self: center;
-		margin: -10px 0px 0px 0px;
+		margin: -8px 0px 0px 0px;
 		font-size: 16px;
 	}
 }
+
 @media screen and (max-width: 500px) {
   .switchContainer {
     font-size: 12px;
     margin-right: 8px;
   }
+
   h4.switchLabel {
     font-size: 10px;
   }
 }
+
 @media screen and (max-width: 350px) {
   .switchContainer {
     margin-top: -1px;
