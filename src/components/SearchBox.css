@@ -11,8 +11,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 12px 10px 0px 10px;
-	width: 100%;
+	margin: 12px auto 0px auto;
+	width: 90%;
 	text-align: center;
 	color: hotpink;
 	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+100;Grey+Flat */
@@ -43,7 +43,7 @@
 }
 @media screen and (max-width: 1200px) {
   .searchBox {
-	margin: 0px 10px 0px 10px;
+		margin: 0px auto 0px auto;
   }
 }
 @media screen and (max-width: 500px) {
