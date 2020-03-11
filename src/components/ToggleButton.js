@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './ToggleButton.css';
+import React, { useRef, useState } from 'react';
 import Particles from 'react-particles-js';
+import './ToggleButton.css';
 
 const particlesOptions = {
   "particles": {
@@ -84,44 +84,33 @@ const particlesOptions = {
   "retina_detect": true
 }
 
-class ToggleButton extends Component {
-	constructor() {
-		super();
-		this.state = {
-			isToggleOn: false,
-			message: 'Turn Animation On'
-		}
-	}
+const ToggleButton = () => {
 
-handleClick = () => {
-	if (!this.state.isToggleOn){
-		this.setState({isToggleOn: true, message: "Turn Animation Off"})
-	} else {
-		this.setState({isToggleOn: false, message: "Turn Animation On"})
-	}
+  const sliderParentRef = useRef()
+  const sliderRef = useRef();
+  const [message, setMessage] = useState('On')
+  const [isToggleOn, setIsToggleOn] = useState(false)
+
+  const handleClick = () => {
+    if (isToggleOn) {
+      setMessage('On')
+    } else {
+      setMessage('Off')
+    }
+    setIsToggleOn(!isToggleOn)
+    sliderParentRef.current.classList.toggle('round-parent')
+    sliderRef.current.classList.toggle('round')
+  }
+
+  return (
+    <div className="toggle-div-2-parent">
+      {isToggleOn && <Particles className='particles' params={particlesOptions} />}
+      <div className="toggle-div-2" ref={sliderParentRef} onClick={() => handleClick()}>
+        <span className="slider" ref={sliderRef} ></span>
+      </div>
+      <h4 className="switchLabel22">Turn Animation {message}</h4>
+    </div>
+  )
 }
 
-	render(){
-		return (
-			<div className="switchContainer">
-				{
-				!this.state.isToggleOn?
-				<div></div>
-        : <Particles className='particles' params={particlesOptions}  />
-				}
-				{/*<label className="switch" onChange={this.handleClick}>
-                  <input type="checkbox"/>
-                  <span className="slider round"></span>
-                </label>
-				<h4 className="switchLabel">{this.state.message}</h4> */}
-        <div className="toggleDiv">
-         <input type="checkbox" id="switch" onChange={this.handleClick} />
-         <label htmlFor="switch"></label>
-        </div>
-        <h4 className="switchLabel">{this.state.message}</h4>
-			</div>
-		);
-	}
-}
-
-export default ToggleButton;
+export default ToggleButton
