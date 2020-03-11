@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBox from './SearchBox';
-import ToggleButton from './ToggleButton';
+import ToggleButtonWithContainer from './ToggleButtonWithContainer';
 import './Header.css';
 
 const Header = ({ searchChange }) => {
@@ -13,7 +13,7 @@ const Header = ({ searchChange }) => {
 			<div className="searchSwitchContainer">
 				<SearchBox searchChange={searchChange} />
 				<p className="phoneLabel2">123-456-ext.</p>
-				<ToggleButton />
+				<ToggleButtonWithContainer />
 			</div>
 		</div>
 	);

@@ -1,0 +1,104 @@
+.switchContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  justify-content: center;
+  justify-self: center;
+	margin: 10px;
+	height: 38px;
+	padding-top: 3px;
+}
+
+h4.switchLabel {
+	display: flex;
+	justify-content: center;
+	color: hotpink;
+	margin: 0;
+	padding: 2px 4px;
+	font-family: Roboto, sans;
+	z-index: 1;
+  margin-bottom: 4px;
+}
+
+.toggleDiv {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.toggleDiv input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggleDiv label {
+  cursor: pointer;
+  /*text-indent: -9999px;*/
+  width: 60px;
+  height: 30px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.toggleDiv label:after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.toggleDiv input:checked + label {
+  background: #74b9ff;
+}
+
+.toggleDiv input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 55px;
+  left: 0;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1200px) {
+	.switchContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+    justify-content: center;
+    justify-self: center;
+		margin: -10px 0px 0px 0px;
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+  .switchContainer {
+    font-size: 12px;
+    margin-right: 8px;
+  }
+
+  h4.switchLabel {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .switchContainer {
+    margin-top: -1px;
+  }
+}
