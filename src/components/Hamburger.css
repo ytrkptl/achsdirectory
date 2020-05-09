@@ -1,0 +1,20 @@
+.ham-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+
+.ham-bar {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin: 2px 0;
+}
+
+@media screen and (max-width: 350px) {
+  .ham-bar {
+    width: 16px;
+  }
+}
