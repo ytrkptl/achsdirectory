@@ -21,24 +21,20 @@ fieldset {
 .emailLabel {
   margin-top: 10px;
 }
-.signInForm input[type=email]{
+.signInForm input[type="email"] {
   margin: 10px;
   height: 24px;
   padding-left: 4px;
 }
-.signInForm input[type=password]{
+.signInForm input[type="password"] {
   margin: 10px;
   height: 24px;
   padding-left: 4px;
 }
-.signInForm input[type=submit]{
+.signInForm input[type="submit"] {
   margin: 10px;
   height: 30px;
 }
 #message {
   color: #ff3232;
-}
-
-.AdminPortalButtons {
-  
 }

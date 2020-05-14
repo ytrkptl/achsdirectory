@@ -37,58 +37,58 @@
 /*the 5 lines below cause the spinner to be hidden. The spinner 
 automatically shows up for input boxes with type=number otherwise
 Source: https://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.addForm input[type=text]{
+.addForm input[type="text"] {
   margin: 10px;
   height: 24px;
   width: 240px;
   padding-left: 4px;
 }
-.addForm input[type=email]{
+.addForm input[type="email"] {
   margin: 10px;
   height: 24px;
   width: 240px;
   padding-left: 4px;
 }
-.addForm input[type=number]{
+.addForm input[type="number"] {
   margin: 10px;
   height: 24px;
   width: 240px;
   padding-left: 4px;
 }
-.addForm input[type=tel]{
+.addForm input[type="tel"] {
   margin: 10px;
   height: 24px;
   width: 240px;
   padding-left: 4px;
 }
-.addForm input[type=submit]{
+.addForm input[type="submit"] {
   margin: 10px;
   height: 30px;
 }
 @media screen and (max-width: 350px) {
-  .addForm input[type=text]{
+  .addForm input[type="text"] {
     width: 200px;
   }
-  .addForm input[type=email]{
+  .addForm input[type="email"] {
     width: 200px;
   }
-  .addForm input[type=tel]{
+  .addForm input[type="tel"] {
     width: 200px;
   }
 }
 @media screen and (max-width: 300px) {
-  .addForm input[type=text]{
+  .addForm input[type="text"] {
     width: 180px;
   }
-  .addForm input[type=email]{
+  .addForm input[type="email"] {
     width: 180px;
   }
-  .addForm input[type=tel]{
+  .addForm input[type="tel"] {
     width: 180px;
   }
 }

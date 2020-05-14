@@ -1,10 +1,10 @@
-.btn-group2{
-	background-color: beige;
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-	align-items: flex-start;
-	height: 38px;
-	width: 100%;
+.btn-group2 {
+  background-color: beige;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: flex-start;
+  height: 38px;
+  width: 100%;
   z-index: 4;
 }
 

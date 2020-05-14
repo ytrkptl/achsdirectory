@@ -1,117 +1,117 @@
 .headerContainer {
-	height: 58px;
-	width: 100%;
-	display: grid;
-	grid-template-rows: 58px;
-	grid-template-columns: 1fr 3fr;
-	align-items: center;
-	justify-content: center;
-	border-bottom: 1px solid black;
-	margin-top: 0px;
+  height: 58px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 58px;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  margin-top: 0px;
 }
 
 .makeFontBigger2 {
-	font-size: 200%;
-	margin: 8px;
-	text-align: center;
+  font-size: 200%;
+  margin: 8px;
+  text-align: center;
 }
 
 .searchSwitchContainer {
-	display: grid;
-	grid-template-rows: 1;
-	grid-template-columns: 2.5fr 1fr 1fr; 
-	box-sizing: border-box;
-	margin: 10px 0px;
-	width: 100%;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 2.5fr 1fr 1fr;
+  box-sizing: border-box;
+  margin: 10px 0px;
+  width: 100%;
 }
 
-.phoneLabel{
-	display: none;
+.phoneLabel {
+  display: none;
 }
 
-.phoneLabel2{
-	display: flex;
-	font-weight: 700;
-	color: #ffd700;
-	justify-content: center;
-	align-items: center;
+.phoneLabel2 {
+  display: flex;
+  font-weight: 700;
+  color: #ffd700;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1200px) {
-	.headerContainer {
-		height: 84px;
-		display: grid;
-		grid-template-rows: 42px 42px;
-		grid-template-columns: 100%;
-		text-align: center;
-		align-items: center;
-	}
+  .headerContainer {
+    height: 84px;
+    display: grid;
+    grid-template-rows: 42px 42px;
+    grid-template-columns: 100%;
+    text-align: center;
+    align-items: center;
+  }
 
-	.row1{
-		display: grid;
-		grid-template-columns: 2.5fr 1fr;
-	}
+  .row1 {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+  }
 
-	.makeFontBigger2 {
-		margin: 0px 0px 0px 0px;
-	}
+  .makeFontBigger2 {
+    margin: 0px 0px 0px 0px;
+  }
 
-	.phoneLabel{
-		display: flex;
-		font-weight: 700;
-		color: #ffd700;
-		text-align: center;
-		justify-content: center;
-		align-items: center;
-		vertical-align: middle;
-		padding: 0;
-		margin: 0;
-	}
+  .phoneLabel {
+    display: flex;
+    font-weight: 700;
+    color: #ffd700;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+  }
 
-	.phoneLabel2{
-		display: none;
-	}
+  .phoneLabel2 {
+    display: none;
+  }
 
-	.searchSwitchContainer {
-		display: grid;
-		grid-template-columns: 2.5fr 1fr;
-	}
+  .searchSwitchContainer {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+  }
 }
 @media screen and (max-width: 500px) {
-	.headerContainer {
-		height: 84px;
-		display: grid;
-		grid-template-rows: 42px 42px;
-		grid-template-columns: 100%;
-		text-align: center;
-		align-items: center;
-	}
-	.row1{
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-	}
-	.makeFontBigger2 {
-		margin: 0px 0px 0px 0px;
-		font-size: 24px;
-	}
-	.phoneLabel{
-		display: flex;
-		font-weight: 700;
-		color: #ffd700;
-		text-align: center;
-		justify-content: center;
-		align-items: center;
-		vertical-align: middle;
-		padding: 0;
-		margin: 0;
-	}
-	.phoneLabel2{
-		display: none;
-	}
-	.searchSwitchContainer {
-		display: grid;
-		grid-template-columns: 2fr 1fr; 
-		/*margin: 4px;*/
-		/*background-color: #800000;*/
-	}
+  .headerContainer {
+    height: 84px;
+    display: grid;
+    grid-template-rows: 42px 42px;
+    grid-template-columns: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .row1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .makeFontBigger2 {
+    margin: 0px 0px 0px 0px;
+    font-size: 24px;
+  }
+  .phoneLabel {
+    display: flex;
+    font-weight: 700;
+    color: #ffd700;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+  }
+  .phoneLabel2 {
+    display: none;
+  }
+  .searchSwitchContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /*margin: 4px;*/
+    /*background-color: #800000;*/
+  }
 }

@@ -1,29 +1,29 @@
 .footerDiv {
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	z-index: 1;
-	font-family: Roboto, sans;
-	font-weight: 300;
-	color: #ffd700;
-	padding: 0;
-	margin: 0;
-	/*height: 54px;*/
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-family: Roboto, sans;
+  font-weight: 300;
+  color: #ffd700;
+  padding: 0;
+  margin: 0;
+  /*height: 54px;*/
 }
 .footerDiv p {
-	margin: 0px;
-	padding: 0px 10px;
+  margin: 0px;
+  padding: 0px 10px;
 }
 
 .footerChildDiv {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width: 500px) {
-	.footerDiv {
-		font-size: 12px;
-	}
+  .footerDiv {
+    font-size: 12px;
+  }
 }
