@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API_URL } from "../../config";
 import "./AdminSignIn.css";
 import AsyncComponent from "./AsyncComponent";
 
@@ -39,7 +40,7 @@ class AdminSignIn extends Component {
     if (this.state.signInEmail === "" || this.state.signInPassword === "") {
       this.setState({ message: "Email and password cannot be blank." });
     } else {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/adminsignin`, {
+      fetch(`${API_URL}/adminsignin`, {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

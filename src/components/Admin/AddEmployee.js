@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API_URL } from "../../config";
 import "./AddEmployee.css";
 
 //the following four words are not camelCased in this entire file:
@@ -65,7 +66,7 @@ class AddEmployee extends Component {
   //check if things are inputted as expected
   validateForm = () => {
     fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/checkphone/${this.state.phoneNumText}`
+      `${API_URL}/checkphone/${this.state.phoneNumText}`
     )
       .then((response) => response.json())
       .then((answer) => {
@@ -142,8 +143,8 @@ class AddEmployee extends Component {
     if (valid === "all clear") {
       console.log("valid");
     }
-    // const response = fetch('http://localhost:3000/addemployee', {
-    //     // fetch('https://achsdirectory-api.herokuapp.com/admin', {
+    // const response = fetch(`${API_URL}/addemployee`, {
+    //     // fetch(`${API_URL}/admin`, {
     //       method: 'post',
     //       headers: {'Content-Type': 'application/json'},
     //       body: JSON.stringify({
