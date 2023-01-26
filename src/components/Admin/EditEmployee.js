@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API_URL } from "../../config";
 import "./EditEmployee.css";
 
 class EditEmployee extends Component {
@@ -28,7 +29,7 @@ class EditEmployee extends Component {
   };
   searchLastnames = (event) => {
     fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/findemployeeid/${this.state.lastname}`
+      `${API_URL}/findemployeeid/${this.state.lastname}`
     )
       // fetch('https://achsdirectory-api.herokuapp.com/')
       .then((response) => response.json())
@@ -43,7 +44,7 @@ class EditEmployee extends Component {
   };
   searchFirstnames = (event) => {
     fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/findemployeeid/none/${this.state.firstname}`
+      `${API_URL}/findemployeeid/none/${this.state.firstname}`
     )
       // fetch('https://achsdirectory-api.herokuapp.com/')
       .then((response) => response.json())
@@ -54,7 +55,7 @@ class EditEmployee extends Component {
   };
   searchBothnames = (event) => {
     fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/findemployeeid/${this.state.lastname}/${this.state.firstname}`
+      `${API_URL}/findemployeeid/${this.state.lastname}/${this.state.firstname}`
     )
       // fetch('https://achsdirectory-api.herokuapp.com/')
       .then((response) => response.json())
