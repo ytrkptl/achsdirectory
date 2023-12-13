@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { API_URL } from "../../config";
+// import { API_URL } from "../../config";
 import "./AddEmployee.css";
 
 //the following four words are not camelCased in this entire file:

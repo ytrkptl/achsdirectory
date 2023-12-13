@@ -10,7 +10,7 @@ import AboutCard from "../components/AboutCard";
 // import ReactGA from "react-ga";
 import "./App.css";
 import Data from "../response.json";
-import { API_URL } from "../config";
+// import { API_URL } from "../config";
 
 // ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
 // ReactGA.pageview(window.location.pathname + window.location.search);

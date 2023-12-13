@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { API_URL } from "../../config";
+// import { API_URL } from "../../config";
 import "./EditEmployee.css";
 
 class EditEmployee extends Component {
