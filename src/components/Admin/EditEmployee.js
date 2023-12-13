@@ -28,41 +28,41 @@ class EditEmployee extends Component {
     this.setState({ firstname: event.target.value });
   };
   searchLastnames = (event) => {
-    fetch(
-      `${API_URL}/findemployeeid/${this.state.lastname}`
-    )
-      // fetch('https://achsdirectory-api.herokuapp.com/')
-      .then((response) => response.json())
-      .then((users) => {
-        let someArray = [];
-        for (let i = 0; i < users.arrayTwo.length; i++) {
-          someArray.push(users.arrayTwo[i]);
-        }
-        this.setState({ message: users.message, details: someArray });
-      })
-      .catch((error) => console.log(error));
+    // fetch(
+    //   `${API_URL}/findemployeeid/${this.state.lastname}`
+    // )
+    //   // fetch('https://achsdirectory-api.herokuapp.com/')
+    //   .then((response) => response.json())
+    //   .then((users) => {
+    //     let someArray = [];
+    //     for (let i = 0; i < users.arrayTwo.length; i++) {
+    //       someArray.push(users.arrayTwo[i]);
+    //     }
+    //     this.setState({ message: users.message, details: someArray });
+    //   })
+    //   .catch((error) => console.log(error));
   };
   searchFirstnames = (event) => {
-    fetch(
-      `${API_URL}/findemployeeid/none/${this.state.firstname}`
-    )
-      // fetch('https://achsdirectory-api.herokuapp.com/')
-      .then((response) => response.json())
-      .then((users) =>
-        this.setState({ message: users.message, details: users.arrayTwo })
-      )
-      .catch((error) => console.log(error));
+    // fetch(
+    //   `${API_URL}/findemployeeid/none/${this.state.firstname}`
+    // )
+    //   // fetch('https://achsdirectory-api.herokuapp.com/')
+    //   .then((response) => response.json())
+    //   .then((users) =>
+    //     this.setState({ message: users.message, details: users.arrayTwo })
+    //   )
+    //   .catch((error) => console.log(error));
   };
   searchBothnames = (event) => {
-    fetch(
-      `${API_URL}/findemployeeid/${this.state.lastname}/${this.state.firstname}`
-    )
-      // fetch('https://achsdirectory-api.herokuapp.com/')
-      .then((response) => response.json())
-      .then((users) =>
-        this.setState({ message: users.message, details: users.arrayTwo })
-      )
-      .catch((error) => console.log(error));
+    // fetch(
+    //   `${API_URL}/findemployeeid/${this.state.lastname}/${this.state.firstname}`
+    // )
+    //   // fetch('https://achsdirectory-api.herokuapp.com/')
+    //   .then((response) => response.json())
+    //   .then((users) =>
+    //     this.setState({ message: users.message, details: users.arrayTwo })
+    //   )
+    //   .catch((error) => console.log(error));
   };
   render() {
     return (

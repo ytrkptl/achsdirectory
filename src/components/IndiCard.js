@@ -9,6 +9,7 @@ const IndiCard = ({
   phone,
   id,
   url,
+  urlNew,
   room,
   firstblock,
   secondblock,
@@ -29,7 +30,7 @@ const IndiCard = ({
         <div className="gridItNow">
           <div className="subCardDetails growCard">
             <div className="indiImgContainer">
-              <img className="indiImgRounded" alt="robots" src={url} />
+              <img className="indiImgRounded" alt="robots" src={urlNew} />
             </div>
             <div className="underTextContainer">
               <h3 className="subjectTitle2">{name}</h3>

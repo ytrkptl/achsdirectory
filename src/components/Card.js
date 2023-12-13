@@ -8,6 +8,7 @@ const Card = ({
   email,
   phone,
   url,
+  urlNew,
   itemNum,
 }) => {
   let name = firstname + " " + lastname;
@@ -17,7 +18,7 @@ const Card = ({
       onClick={() => requestIndiCard(true, itemNum)}
     >
       <div className="imgContainer">
-        <img className="imgRounded" alt="robots" src={url} />
+        <img className="imgRounded" alt="robots" src={urlNew} />
       </div>
       <div className="textContainer">
         <h3 className="subjectTitle">{name}</h3>

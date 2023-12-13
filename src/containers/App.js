@@ -9,6 +9,7 @@ import AdminTabs from "../components/Admin/AdminTabs";
 import AboutCard from "../components/AboutCard";
 // import ReactGA from "react-ga";
 import "./App.css";
+import Data from "../response.json";
 import { API_URL } from "../config";
 
 // ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
@@ -31,9 +32,10 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch(`${API_URL}/home`)
-      .then((response) => response.json())
-      .then((users) => this.setState({ allmovies: users, movies: users }));
+    this.setState({ allmovies: Data, movies: Data });
+    // fetch(`${API_URL}/home`)
+    //   .then((response) => response.json())
+    //   .then((users) => this.setState({ allmovies: users, movies: users }));
   }
 
   onSearchChange = (event) => {

@@ -65,24 +65,24 @@ class AddEmployee extends Component {
 
   //check if things are inputted as expected
   validateForm = () => {
-    fetch(
-      `${API_URL}/checkphone/${this.state.phoneNumText}`
-    )
-      .then((response) => response.json())
-      .then((answer) => {
-        if (answer === "not a number") {
-          this.setState((state) => ({
-            showPhoneError: true,
-            phoneErrorMessage: "Only numbers are allowed",
-          }));
-        }
-      })
-      .catch((error) =>
-        this.setState((state) => ({
-          showPhoneError: true,
-          phoneErrorMessage: "Check phone input field again",
-        }))
-      );
+    // fetch(
+    //   `${API_URL}/checkphone/${this.state.phoneNumText}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((answer) => {
+    //     if (answer === "not a number") {
+    //       this.setState((state) => ({
+    //         showPhoneError: true,
+    //         phoneErrorMessage: "Only numbers are allowed",
+    //       }));
+    //     }
+    //   })
+    //   .catch((error) =>
+    //     this.setState((state) => ({
+    //       showPhoneError: true,
+    //       phoneErrorMessage: "Check phone input field again",
+    //     }))
+    //   );
   };
 
   autoFillWithTBD = () => {

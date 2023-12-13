@@ -40,24 +40,27 @@ class AdminSignIn extends Component {
     if (this.state.signInEmail === "" || this.state.signInPassword === "") {
       this.setState({ message: "Email and password cannot be blank." });
     } else {
-      fetch(`${API_URL}/adminsignin`, {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: this.state.signInEmail,
-          password: this.state.signInPassword,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data === "success") {
-            this.props.onMenuChange();
-          } else {
-            this.setState({
-              message: "Incorrect credentials! Please try again.",
-            });
-          }
-        });
+      this.setState({
+        message: "Incorrect credentials! Please try again.",
+      });
+      // fetch(`${API_URL}/adminsignin`, {
+      //   method: "post",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     email: this.state.signInEmail,
+      //     password: this.state.signInPassword,
+      //   }),
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     if (data === "success") {
+      //       this.props.onMenuChange();
+      //     } else {
+      //       this.setState({
+      //         message: "Incorrect credentials! Please try again.",
+      //       });
+      //     }
+      //   });
     }
   };
 
