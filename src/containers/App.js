@@ -7,12 +7,12 @@ import IndiCard from "../components/IndiCard";
 import AdminSignIn from "../components/Admin/AdminSignIn";
 import AdminTabs from "../components/Admin/AdminTabs";
 import AboutCard from "../components/AboutCard";
-import ReactGA from "react-ga";
+// import ReactGA from "react-ga";
 import "./App.css";
 import { API_URL } from "../config";
 
-ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
-ReactGA.pageview(window.location.pathname + window.location.search);
+// ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
+// ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
   constructor() {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ToggleButtonWithContainer.css";
-import Particles from "react-particles-js";
+// import Particles from "react-particles-js";
 import ToggleButton from "./ToggleButton";
 
 const particlesOptions = {
@@ -108,7 +108,8 @@ class ToggleButtonWithContainer extends Component {
         {!this.state.isToggleOn ? (
           <div></div>
         ) : (
-          <Particles className="particles" params={particlesOptions} />
+          <div>particles</div>
+          // <Particles className="particles" params={particlesOptions} />
         )}
         <ToggleButton handleClick={this.handleClick} />
         <h4 className="switchLabel">{this.state.message}</h4>
