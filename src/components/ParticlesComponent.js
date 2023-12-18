@@ -59,7 +59,7 @@ const ParticlesComponent = () => {
             default: "out",
           },
           random: true,
-          speed: 4,
+          speed: 2,
           straight: false,
         },
         number: {
@@ -70,16 +70,13 @@ const ParticlesComponent = () => {
           value: 8,
         },
         opacity: {
-          value: 0.5,
+          value: 1,
         },
         shape: {
           type: "image",
           stroke: {
             width: 0,
             color: "#ffd700",
-          },
-          polygon: {
-            nb_sides: 3,
           },
           options: {
             image: {
