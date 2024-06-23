@@ -1,5 +1,3 @@
-import React from "react";
-
 const ViewEmployee = () => (
   <div style={{ padding: "0px 20px 10px 20px" }}>
     <h3 style={{ color: "#ff3232" }}>

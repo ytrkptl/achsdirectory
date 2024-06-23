@@ -1,19 +1,14 @@
-import React, { Component } from "react";
-import CardList2 from "../components/CardList2";
-import NavTabs from "../components/NavTabs";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import IndiCard from "../components/IndiCard";
-import AdminSignIn from "../components/Admin/AdminSignIn";
-import AdminTabs from "../components/Admin/AdminTabs";
-import AboutCard from "../components/AboutCard";
-// import ReactGA from "react-ga";
+import { Component } from "react";
+import CardList2 from "./components/CardList2";
+import NavTabs from "./components/NavTabs";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import IndiCard from "./components/IndiCard";
+import AdminSignIn from "./components/Admin/AdminSignIn";
+import AdminTabs from "./components/Admin/AdminTabs";
+import AboutCard from "./components/AboutCard";
+import Data from "./data.json";
 import "./App.css";
-import Data from "../response.json";
-// import { API_URL } from "../config";
-
-// ReactGA.initialize(`${process.env.REACT_APP_GA_TRACKING_ID}`);
-// ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
   constructor() {
@@ -83,15 +78,8 @@ class App extends Component {
   }
 
   render() {
-    const {
-      searchfield,
-      movies,
-      indiCard,
-      cardNum,
-      route,
-      navMenu,
-      isAdmin,
-    } = this.state;
+    const { searchfield, movies, indiCard, cardNum, route, navMenu, isAdmin } =
+      this.state;
     const filteredContacts = movies.filter((movie) => {
       return (
         movie.contacts.lastname

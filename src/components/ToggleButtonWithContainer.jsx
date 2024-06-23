@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "./ToggleButtonWithContainer.css";
 // import Particles from "@tsparticles/react";
 import ToggleButton from "./ToggleButton";
@@ -24,11 +24,7 @@ class ToggleButtonWithContainer extends Component {
   render() {
     return (
       <div className="switchContainer">
-        {!this.state.isToggleOn ? (
-          <div></div>
-        ) : (
-          <ParticlesComponent />
-        )}
+        {!this.state.isToggleOn ? <div></div> : <ParticlesComponent />}
         <ToggleButton handleClick={this.handleClick} />
         <h4 className="switchLabel">{this.state.message}</h4>
       </div>

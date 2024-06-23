@@ -14,7 +14,7 @@ h1 {
   grid-template-columns: 1;
   grid-template-rows: 58px 38px 1fr 54px;
   overflow: hidden;
-  background-image: url("../assets/chalkboard.jpg");
+  background-image: url("./assets/chalkboard.jpg");
   box-sizing: border-box;
   z-index: 1;
 }

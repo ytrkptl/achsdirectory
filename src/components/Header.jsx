@@ -1,4 +1,3 @@
-import React from "react";
 import SearchBox from "./SearchBox";
 import ToggleButtonWithContainer from "./ToggleButtonWithContainer";
 import "./Header.css";
