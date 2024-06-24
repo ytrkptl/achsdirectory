@@ -1,13 +1,14 @@
-.btn-group {
+.nav-links {
   background-color: beige;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   align-items: center;
   height: 38px;
   width: 100%;
+  place-items: center;
 }
 
-.btn-group button {
+.nav-links .custom-link {
   background-color: #74b9ff;
   border: 1px solid black;
   color: white;
@@ -16,21 +17,26 @@
   float: left;
   width: 100%;
   height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 
-.btn-group button:not(:last-child) {
+.nav-links .custom-link:not(:last-child) {
   border-right: none;
 }
 
-.btn-group button:hover {
+.nav-links .custom-link:hover {
   background-color: #6c5ce7;
 }
 
-.btn-group button:focus {
+.nav-links .custom-link:focus {
   background-color: #6c5ce7;
 }
 
-.btn-group button:active {
+.nav-links .custom-link:active {
   background-color: #6c5ce7;
 }
 
@@ -64,7 +70,7 @@
   z-index: 4;
 }
 
-.dropdown-content button {
+.dropdown-content .custom-link {
   color: white;
   display: block;
   justify-content: center;
@@ -85,7 +91,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .btn-group button {
+  .nav-links .custom-link {
     padding: 0px;
   }
 

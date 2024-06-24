@@ -11,8 +11,8 @@ h1 {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: 58px 38px 1fr 54px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 58px calc(100vh - 58px - 54px) 54px;
   overflow: hidden;
   background-image: url("./assets/chalkboard.jpg");
   box-sizing: border-box;
@@ -83,7 +83,7 @@ h1 {
 }
 @media screen and (max-width: 1200px) {
   .mainContainer {
-    grid-template-columns: 1;
+    grid-template-columns: 1fr;
     grid-template-rows: 84px 38px 1fr 54px;
   }
   .searchDiv {

@@ -1,30 +1,48 @@
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Data from "../data.json";
 import "./IndiCard.css";
 
-const IndiCard = ({
-  requestIndiCard,
-  lastname,
-  firstname,
-  email,
-  phone,
-  id,
-  url,
-  urlNew,
-  room,
-  firstblock,
-  secondblock,
-  thirdblock,
-  fourthblock,
-  lunch,
-}) => {
-  let name = firstname + " " + lastname;
+const IndiCard = () => {
+  const [contactInfo, setContactInfo] = useState(null);
+  const { contactId } = useParams();
+
+  useEffect(() => {
+    function findItem() {
+      return Data.find((item) => item.id === Number(contactId)).contacts;
+    }
+    let contactItem = findItem();
+    console.log(contactItem);
+
+    // Rest of the code...
+    setContactInfo(contactItem);
+    console.log(contactInfo);
+    return () => {
+      setContactInfo(null);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [contactId]);
+
+  const {
+    id,
+    firstname,
+    lastname,
+    phone,
+    email,
+    urlNew,
+    firstblock,
+    secondblock,
+    thirdblock,
+    fourthblock,
+    lunch,
+  } = contactInfo ?? {};
+  const name = firstname + " " + lastname;
+
   return (
     <div className="parentDivDisplay">
-      <button
-        className="buttonStyle"
-        onClick={() => requestIndiCard(false, id)}
-      >
+      <Link to="/:contactId" className="buttonStyle">
         Go Back
-      </button>
+      </Link>
       <div className="indiCardDetails" key={id}>
         <div className="gridItNow">
           <div className="subCardDetails growCard">

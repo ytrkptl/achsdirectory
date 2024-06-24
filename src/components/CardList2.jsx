@@ -1,15 +1,15 @@
+/* eslint-disable react/prop-types */
 import Card from "./Card";
 
-const CardList2 = ({ movies, requestIndiCard }) => {
+const CardList2 = ({ contacts }) => {
   return (
     <div>
-      {movies.map((movie, i) => {
+      {contacts.map((item, i) => {
         return (
           <Card
-            {...movie.contacts}
-            requestIndiCard={requestIndiCard}
+            contactInfoFromCardList={item.contacts}
             key={i}
-            itemNum={i}
+            itemNum={i + 1}
           />
         );
       })}
