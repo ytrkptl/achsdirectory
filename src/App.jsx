@@ -25,24 +25,15 @@ class App extends Component {
     this.setState({ navMenu: true, isAdmin: true, adminRoute: "adminHome" });
   };
 
-  logoutAdmin = () => {
-    this.setState({ navMenu: false, isAdmin: false });
-  };
-
-  scrollUp() {
-    let element = document.getElementById("myDIV");
-    element.scrollTop = 0;
-  }
-
   render() {
     return (
       <div className="mainContainer">
         <Header className="headerDiv" searchChange={this.onSearchChange} />
         <ErrorBoundary>
           <Suspense fallback={<h1>Loading...</h1>}>
-            <div id="myDIV" className="mainDiv">
+            <main className="mainDiv">
               <RoutesComponent searchfield={this.state.searchfield} />
-            </div>
+            </main>
           </Suspense>
         </ErrorBoundary>
         <Footer />
