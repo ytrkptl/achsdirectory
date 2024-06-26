@@ -1,14 +1,10 @@
-/* eslint-disable react/prop-types */
-// import { Component } from "react";
+import { Fragment, useEffect, useState } from "react";
 import NavTabs from "./components/NavTabs";
 import CardList2 from "./components/CardList2";
-// import AdminTabs from "./components/Admin/AdminTabs";
 import Data from "./data.json";
-import { Fragment, useEffect, useState } from "react";
 import IndiCard from "./components/IndiCard";
-import { Route, Routes } from "react-router-dom";
 import Card from "./components/Card";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import "./Home.css";
 
 const FilteredHomeElement = ({ filteredContacts }) => {
@@ -85,7 +81,7 @@ const Home = ({ searchfield }) => {
   ];
 
   return (
-    <div className="home">
+    <Fragment>
       <NavTabs
         subjectUrls={subjectUrls}
         subjectsForDisplay={subjectsForDisplay}
@@ -121,7 +117,7 @@ const Home = ({ searchfield }) => {
           </Routes>
         </Fragment>
       )}
-    </div>
+    </Fragment>
   );
 };
 

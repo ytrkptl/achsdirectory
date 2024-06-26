@@ -3,25 +3,27 @@ import { useEffect, useState } from "react";
 import Data from "../data.json";
 import "./IndiCard.css";
 
-const IndiCard = () => {
+const IndiCard = ({ itemNum, contactInfoFromCardList }) => {
   const [contactInfo, setContactInfo] = useState(null);
   const { contactId } = useParams();
 
   useEffect(() => {
-    function findItem() {
-      return Data.find((item) => item.id === Number(contactId)).contacts;
+    let contactItem;
+    if (!contactId) {
+      contactItem = contactInfoFromCardList;
+    } else {
+      contactItem = Data.find((item) => item.id === Number(contactId)).contacts;
     }
-    let contactItem = findItem();
-    console.log(contactItem);
 
-    // Rest of the code...
     setContactInfo(contactItem);
-    console.log(contactInfo);
+
     return () => {
       setContactInfo(null);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contactId]);
+  }, [contactId, itemNum]);
+
+  if (!contactInfo) return <div>Loading...</div>;
 
   const {
     id,
@@ -35,15 +37,15 @@ const IndiCard = () => {
     thirdblock,
     fourthblock,
     lunch,
-  } = contactInfo ?? {};
+  } = contactId ? contactInfo : contactInfoFromCardList;
   const name = firstname + " " + lastname;
 
   return (
     <div className="parentDivDisplay">
-      <Link to="/:contactId" className="buttonStyle">
+      <Link to={`/${id}`} className="buttonStyle">
         Go Back
       </Link>
-      <div className="indiCardDetails" key={id}>
+      <div className="indiCardDetails" key={Math.random()}>
         <div className="gridItNow">
           <div className="subCardDetails growCard">
             <div className="indiImgContainer">
