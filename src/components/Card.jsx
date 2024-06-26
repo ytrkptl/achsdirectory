@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import ButtonLikeLink from "./ButtonLikeLink";
 import Data from "../data.json";
 import "./Card.css";
 
@@ -16,6 +17,7 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
     }
 
     setContactInfo(contactItem);
+
     return () => {
       setContactInfo(null);
     };
@@ -30,12 +32,8 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
   const name = firstname + " " + lastname;
 
   return (
-    <Fragment>
-      {contactId ? (
-        <Link to={`/${id}`} className="buttonStyle">
-          Go Back
-        </Link>
-      ) : null}
+    <div style={{ marginTop: `${contactId && "20px"}` }}>
+      {contactId ? <ButtonLikeLink to={`/`} text="Go Home" /> : null}
       <Link className="CardDetails growCard2" to={`/${id}/info`}>
         <div className="imgContainer">
           <img className="imgRounded" alt="robots" src={urlNew} />
@@ -46,7 +44,7 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
           <p className="emailTitle">{email}</p>
         </div>
       </Link>
-    </Fragment>
+    </div>
   );
 };
 

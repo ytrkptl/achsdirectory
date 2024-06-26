@@ -1,5 +1,6 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ButtonLikeLink from "./ButtonLikeLink";
 import Data from "../data.json";
 import "./IndiCard.css";
 
@@ -42,9 +43,7 @@ const IndiCard = ({ itemNum, contactInfoFromCardList }) => {
 
   return (
     <div className="parentDivDisplay">
-      <Link to={`/${id}`} className="buttonStyle">
-        Go Back
-      </Link>
+      <ButtonLikeLink to={`/${id}`} text="Go Back" />
       <div className="indiCardDetails" key={Math.random()}>
         <div className="gridItNow">
           <div className="subCardDetails growCard">

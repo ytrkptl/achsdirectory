@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import Card from "./Card";
+import "./CardList.css";
 
-const CardList2 = ({ contacts }) => {
+const CardList = ({ contacts }) => {
   return (
-    <div>
+    <div className="cardList">
       {contacts.map((item, i) => {
         return (
           <Card
@@ -16,4 +16,4 @@ const CardList2 = ({ contacts }) => {
     </div>
   );
 };
-export default CardList2;
+export default CardList;
