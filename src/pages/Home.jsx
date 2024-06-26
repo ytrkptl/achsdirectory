@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
-import NavTabs from "./components/NavTabs";
-import CardList2 from "./components/CardList2";
-import Data from "./data.json";
-import IndiCard from "./components/IndiCard";
-import Card from "./components/Card";
+import NavTabs from "../components/NavTabs";
+import CardList from "../components/CardList";
+import Data from "../data.json";
+import IndiCard from "../components/IndiCard";
+import Card from "../components/Card";
 import { Route, Routes } from "react-router-dom";
 import "./Home.css";
 
@@ -11,7 +11,7 @@ const FilteredHomeElement = ({ filteredContacts }) => {
   return (
     <Fragment>
       {filteredContacts.length > 0 ? (
-        <CardList2 contacts={filteredContacts} />
+        <CardList contacts={filteredContacts} />
       ) : (
         <h1>No matches found. Try searching again!</h1>
       )}
@@ -92,7 +92,7 @@ const Home = ({ searchfield }) => {
       {loadingContacts ? (
         <h1>Loading...</h1>
       ) : (
-        <Fragment>
+        <section className="home-section">
           <Routes>
             <Route
               path="/"
@@ -115,7 +115,7 @@ const Home = ({ searchfield }) => {
             <Route path="/:contactId" element={<Card />} />
             <Route path="/:contactId/info" element={<IndiCard />} />
           </Routes>
-        </Fragment>
+        </section>
       )}
     </Fragment>
   );
