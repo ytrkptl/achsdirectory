@@ -13,16 +13,13 @@ const NavTabs2 = ({ subjectUrls, subjectsForDisplay }) => {
   // });
   return (
     <div className="nav-links">
-      {
-        // eslint-disable-next-line react/prop-types
-        subjectsForDisplay.map((item, i) => {
-          return (
-            <NavLink to={subjectUrls[i]} key={i}>
-              {item}
-            </NavLink>
-          );
-        })
-      }
+      {subjectsForDisplay.map((item, i) => {
+        return (
+          <NavLink to={subjectUrls[i]} key={i} className="custom-link">
+            {item}
+          </NavLink>
+        );
+      })}
     </div>
   );
 };
