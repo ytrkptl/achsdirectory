@@ -1,8 +1,9 @@
 .p-menubar-root-list {
   margin-left: 1em;
 }
-
-.p-menubar-root-list h1:hover {
+.p-menubar-root-list h1,
+.p-menubar-root-list h1:hover,
+.p-menubar-root-list h1:focus {
   margin-block-start: 0em;
   margin-block-end: 0em;
   height: 58px;

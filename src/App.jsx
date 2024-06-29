@@ -1,15 +1,13 @@
 import { Component, Fragment, Suspense } from "react";
 import RoutesComponent from "./Routes";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import ErrorBoundary from "./components/ErrorBoundary";
-// import "primeflex/primeflex.css";
-import "primereact/resources/primereact.css";
+import NavigationBar from "./components/prime/NavigationBar/NavigationBar";
 import "primereact/resources/themes/lara-dark-blue/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 
 import "./App.css";
-import NavigationBar from "./components/prime/NavigationBar/NavigationBar";
 
 const initialState = {
   searchfield: "",
