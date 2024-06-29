@@ -8,15 +8,6 @@ import "primereact/resources/themes/lara-dark-blue/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 
-// import "primereact/resources/themes/lara-light-blue/theme.css";
-// import "primereact/resources/themes/lara-light-indigo/theme.css";
-// import "primereact/resources/themes/lara-light-purple/theme.css";
-// import "primereact/resources/themes/lara-light-teal/theme.css";
-// import "primereact/resources/themes/lara-dark-blue/theme.css";
-// import "primereact/resources/themes/lara-dark-indigo/theme.css";
-// import "primereact/resources/themes/lara-dark-purple/theme.css";
-// import "primereact/resources/themes/lara-dark-teal/theme.css";
-
 import "./App.css";
 import NavigationBar from "./components/prime/NavigationBar/NavigationBar";
 
