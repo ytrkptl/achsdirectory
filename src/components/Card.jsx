@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ButtonLikeLink from "./ButtonLikeLink";
 import Data from "../data.json";
+import CardSkeleton from "./prime/CardSkeleton/CardSkeleton";
 import "./Card.css";
 
 const Card = ({ itemNum, contactInfoFromCardList }) => {
@@ -24,7 +25,7 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contactId, itemNum]);
 
-  if (!contactInfo) return <div>Loading...</div>;
+  if (!contactInfo) return <CardSkeleton />;
 
   const { firstname, lastname, phone, email, urlNew, id } = contactId
     ? contactInfo
