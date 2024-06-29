@@ -16,31 +16,34 @@ h1 {
   overflow: hidden;
   background-image: url("./assets/chalkboard.jpg");
   box-sizing: border-box;
-  z-index: 1;
 }
 
 .headerDiv {
   box-sizing: border-box;
   display: block;
   text-align: center;
-  z-index: 1;
 }
 .navDiv {
   box-sizing: border-box;
   display: block;
   text-align: center;
-  z-index: 1;
 }
 .mainDiv {
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: hidden;
   border: 1px solid black;
-  text-align: center;
-  z-index: 1;
   width: 100%;
   padding: 8px 4px;
-  overflow-x: hidden;
   min-height: calc(100vh - 58px - 54px - 38px);
+}
+.mainDiv ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mainDiv ul > li > div > a {
+  color: white;
+  text-decoration: none;
 }
 /* width */
 ::-webkit-scrollbar {
