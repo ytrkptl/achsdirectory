@@ -6,7 +6,7 @@ import "./Card.css";
 
 const Card = ({ itemNum, contactInfoFromCardList }) => {
   const [contactInfo, setContactInfo] = useState(null);
-  const { contactId } = useParams();
+  const { departmentId, contactId } = useParams();
 
   useEffect(() => {
     let contactItem;
@@ -34,7 +34,10 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
   return (
     <div style={{ marginTop: `${contactId && "20px"}` }}>
       {contactId ? <ButtonLikeLink to={`/`} text="Go Home" /> : null}
-      <Link className="CardDetails growCard2" to={`/${id}/info`}>
+      <Link
+        className="CardDetails growCard2"
+        to={`/${departmentId}/${id}/info`}
+      >
         <div className="imgContainer">
           <img className="imgRounded" alt="robots" src={urlNew} />
         </div>

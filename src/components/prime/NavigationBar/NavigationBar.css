@@ -1,0 +1,91 @@
+.p-menubar-root-list {
+  margin-left: 1em;
+}
+
+.p-menubar-root-list h1:hover {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  height: 58px;
+  display: flex;
+  place-items: center;
+}
+.p-menubar.p-component > ul > li:nth-child(1) > div > a {
+  padding-left: 0;
+}
+
+.p-menubar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Contains the logo */
+.p-menubar-start {
+  display: none;
+}
+/* Contains the search bar */
+.p-menubar-end {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+}
+
+/* Move the text next to the icon in the dropdown further away */
+a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#root > div > div.p-menubar.p-component > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a > .p-icon {
+  margin-left: 0;
+  width: 1.6rem;
+  height: 2rem;
+}
+
+ul {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+/* Styles the h1 title of the application */
+#root > div.card > div > ul > li h1 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/* Move the text in the dropdown further towards the right of the icon */
+span.pi::before {
+  margin-right: 0.8rem;
+}
+span.pi-home::before {
+  margin-right: 0.2rem;
+}
+
+@media (min-width: 300px) {
+  /* Move the search bar to the right */
+  .p-menubar-end {
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  /* Display the logo as well */
+  .p-menubar-start {
+    margin-left: 1rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    display: flex;
+  }
+  /* Move the search bar to the right */
+  .p-menubar-end {
+    margin-right: 1em;
+  }
+}

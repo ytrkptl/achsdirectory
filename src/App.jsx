@@ -43,18 +43,17 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <div className="mainContainer">
-          <NavigationBar searchChange={this.onSearchChange} />
-          {/* <Header className="headerDiv" searchChange={this.onSearchChange} /> */}
-          <ErrorBoundary>
-            <Suspense fallback={<h1>Loading...</h1>}>
+        <ErrorBoundary>
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <div className="mainContainer">
+              <NavigationBar searchChange={this.onSearchChange} />
               <main className="mainDiv">
                 <RoutesComponent searchfield={this.state.searchfield} />
               </main>
-            </Suspense>
-          </ErrorBoundary>
-          <Footer />
-        </div>
+              <Footer />
+            </div>
+          </Suspense>
+        </ErrorBoundary>
       </Fragment>
     );
   }

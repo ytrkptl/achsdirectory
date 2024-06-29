@@ -1,11 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
-import NavTabs from "../components/NavTabs";
 import CardList from "../components/CardList";
 import Data from "../data.json";
 import IndiCard from "../components/IndiCard";
 import Card from "../components/Card";
 import { Route, Routes } from "react-router-dom";
 import "./Home.css";
+import SubjectCardList from "../components/prime/SubjectCardList/SubjectCardList";
 
 const FilteredHomeElement = ({ filteredContacts }) => {
   return (
@@ -46,26 +46,17 @@ const Home = ({ searchfield }) => {
           .toLowerCase()
           .includes(searchfield.trim().toLowerCase()) ||
         item.contacts.email.toLowerCase().includes(searchfield.toLowerCase()) ||
-        item.contacts.phone.includes(searchfield)
+        item.contacts.phone.includes(searchfield) ||
+        item.contacts.department
+          .toLowerCase()
+          .includes(searchfield.toLowerCase())
       );
     });
+    console.log(filteredContactsForSearch);
     setFilteredContacts(filteredContactsForSearch);
     return () => setFilteredContacts([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchfield]);
-
-  const subjectsForDisplay = [
-    "Home",
-    "Math",
-    "Science",
-    "English",
-    "Social Studies",
-    "Special Education",
-    "Other",
-    "Office",
-    "Physical Education",
-    "Vocational",
-  ];
 
   const subjectUrls = [
     "home",
@@ -82,13 +73,6 @@ const Home = ({ searchfield }) => {
 
   return (
     <Fragment>
-      <NavTabs
-        subjectUrls={subjectUrls}
-        subjectsForDisplay={subjectsForDisplay}
-        onRouteChange={() => {
-          console.log("hello");
-        }}
-      />
       {loadingContacts ? (
         <h1>Loading...</h1>
       ) : (
@@ -105,15 +89,17 @@ const Home = ({ searchfield }) => {
               return (
                 <Route
                   key={i}
-                  path={`/${item}`}
-                  element={
-                    <FilteredHomeElement filteredContacts={filteredContacts} />
-                  }
+                  exact
+                  path={`/:departmentId`}
+                  element={<SubjectCardList searchfield={searchfield} />}
                 />
               );
             })}
-            <Route path="/:contactId" element={<Card />} />
-            <Route path="/:contactId/info" element={<IndiCard />} />
+            <Route path="/:departmentId/:contactId" element={<Card />} />
+            <Route
+              path="/:departmentId/:contactId/info"
+              element={<IndiCard />}
+            />
           </Routes>
         </section>
       )}

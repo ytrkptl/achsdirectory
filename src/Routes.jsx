@@ -1,5 +1,5 @@
 import { Route, Routes, Outlet } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./containers/Home";
 
 const RoutesComponent = ({ searchfield }) => {
   return (

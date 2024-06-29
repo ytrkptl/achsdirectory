@@ -6,7 +6,7 @@ import "./IndiCard.css";
 
 const IndiCard = ({ itemNum, contactInfoFromCardList }) => {
   const [contactInfo, setContactInfo] = useState(null);
-  const { contactId } = useParams();
+  const { departmentId, contactId } = useParams();
 
   useEffect(() => {
     let contactItem;
@@ -43,7 +43,7 @@ const IndiCard = ({ itemNum, contactInfoFromCardList }) => {
 
   return (
     <div className="parentDivDisplay">
-      <ButtonLikeLink to={`/${id}`} text="Go Back" />
+      <ButtonLikeLink text="Go Back" goBack={true} />
       <div className="indiCardDetails" key={Math.random()}>
         <div className="gridItNow">
           <div className="subCardDetails growCard">
