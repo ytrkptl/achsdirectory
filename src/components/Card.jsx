@@ -1,13 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ButtonLikeLink from "./ButtonLikeLink";
-import Data from "../data.json";
+import Data from "@/data/data.json";
 import CardSkeleton from "./prime/CardSkeleton/CardSkeleton";
 import "./Card.css";
 
 const Card = ({ itemNum, contactInfoFromCardList }) => {
   const [contactInfo, setContactInfo] = useState(null);
-  const { departmentId, contactId } = useParams();
+  const { contactId } = useParams();
 
   useEffect(() => {
     let contactItem;
@@ -27,18 +27,14 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
 
   if (!contactInfo) return <CardSkeleton />;
 
-  const { firstname, lastname, phone, email, urlNew, id } = contactId
-    ? contactInfo
-    : contactInfoFromCardList;
+  const { firstname, lastname, phone, email, urlNew, id, department } =
+    contactId ? contactInfo : contactInfoFromCardList;
   const name = firstname + " " + lastname;
 
   return (
     <div style={{ marginTop: `${contactId && "20px"}` }}>
       {contactId ? <ButtonLikeLink to={`/`} text="Go Home" /> : null}
-      <Link
-        className="CardDetails growCard2"
-        to={`/${departmentId}/${id}/info`}
-      >
+      <Link className="CardDetails growCard2" to={`/${department}/${id}/info`}>
         <div className="imgContainer">
           <img className="imgRounded" alt="robots" src={urlNew} />
         </div>

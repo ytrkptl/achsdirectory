@@ -1,43 +1,37 @@
-import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Data from "../../../data.json";
-import Card from "../../Card";
+import { useParams } from "react-router-dom";
+import Data from "@/data/data.json";
+import Card from "@/components/Card";
 import { StyledSubjectCardList } from "./SubjectCardList.styles";
 
 const SubjectCardList = ({ searchfield }) => {
   const [contacts, setContacts] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [filterSearchByDepartment, setFilterSearchByDepartment] = useState([]);
-  const [loadingContacts, setLoadingContacts] = useState(true);
+  const [loadingContacts, setLoadingContacts] = useState(false);
   const { departmentId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
+    setLoadingContacts(true);
     setContacts(Data);
-    setLoadingContacts(false);
 
     return () => {
-      setLoadingContacts(true);
+      setLoadingContacts(false);
       setContacts([]);
     };
   }, []);
 
   useEffect(() => {
-    console.log(departmentId);
-    if (departmentId === "home") {
-      navigate("/");
-      return;
+    if (departmentId || departmentId) {
+      const filteredContactsFound = contacts.filter((item) => {
+        return item.contacts.department === departmentId;
+      });
+      setFilteredContacts(filteredContactsFound);
     }
-    const filteredContactsFound = contacts.filter((item) => {
-      console.log(typeof item.contacts.department);
-      console.log(typeof departmentId);
-      return item.contacts.department === departmentId;
-    });
-    console.log(contacts);
-    console.log(filteredContactsFound);
-    setFilteredContacts(filteredContactsFound);
-    return () => setFilteredContacts([]);
-  }, [departmentId, loadingContacts]);
+    return () => {
+      setFilteredContacts([]);
+    };
+  }, [contacts, departmentId, loadingContacts]);
 
   useEffect(() => {
     const filteredContactsForSearch = filteredContacts.filter((item) => {
@@ -52,8 +46,8 @@ const SubjectCardList = ({ searchfield }) => {
         item.contacts.phone.includes(searchfield)
       );
     });
-    console.log(filteredContactsForSearch);
     setFilterSearchByDepartment(filteredContactsForSearch);
+    setLoadingContacts(false);
     return () => setFilterSearchByDepartment([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchfield]);
@@ -65,8 +59,10 @@ const SubjectCardList = ({ searchfield }) => {
 
   return (
     <StyledSubjectCardList>
-      {contactsToUse.length < 1 ? (
+      {loadingContacts ? (
         <div>Loading...</div>
+      ) : contactsToUse.length < 1 ? (
+        <div>No Contacts Found</div>
       ) : (
         contactsToUse.map((item, i) => {
           return (

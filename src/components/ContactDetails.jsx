@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ButtonLikeLink from "./ButtonLikeLink";
-import Data from "../data.json";
+import Data from "@/data/data.json";
 import "./IndiCard.css";
 
 const IndiCard = ({ itemNum, contactInfoFromCardList }) => {
   const [contactInfo, setContactInfo] = useState(null);
-  const { departmentId, contactId } = useParams();
+  const { contactId } = useParams();
 
   useEffect(() => {
     let contactItem;
