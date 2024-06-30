@@ -1,5 +1,5 @@
 .p-menubar-root-list {
-  margin-left: 1em;
+  margin-left: 0em;
 }
 .p-menubar-root-list h1,
 .p-menubar-root-list h1:hover,
@@ -88,5 +88,11 @@ span.pi-home::before {
   /* Move the search bar to the right */
   .p-menubar-end {
     margin-right: 1em;
+  }
+}
+
+@media (min-width: 992px) {
+  .p-menubar-root-list {
+    margin-left: 1em;
   }
 }
