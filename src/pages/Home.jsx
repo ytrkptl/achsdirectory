@@ -28,7 +28,7 @@ const Home = ({ searchfield }) => {
 
   useEffect(() => {
     const filteredContactsForSearch = contacts.filter((item) => {
-      const { lastname, firstname, email, phone, department } = item.contacts;
+      const { lastname, firstname, email, phone } = item.contacts;
       const fullName = `${firstname} ${lastname}`;
       const fullNameReversed = `${lastname} ${firstname}`;
       const searchTerm = searchfield.trim().toLowerCase();
@@ -39,8 +39,7 @@ const Home = ({ searchfield }) => {
         fullName.toLowerCase().includes(searchTerm) ||
         fullNameReversed.toLowerCase().includes(searchTerm) ||
         email.toLowerCase().includes(searchTerm) ||
-        phone.toLowerCase().includes(searchTerm) ||
-        department.toLowerCase().includes(searchTerm)
+        phone.toLowerCase().includes(searchTerm)
       );
     });
     setFilteredContacts(filteredContactsForSearch);
