@@ -3,7 +3,7 @@ import "./ButtonLikeLink.css";
 
 const ButtonLikeLink = ({ to, text, goBack = false }) => {
   const navigate = useNavigate();
-  console.log(navigate);
+
   if (goBack) {
     return (
       <Link onClick={() => navigate(-1)} className="button-like-link">
