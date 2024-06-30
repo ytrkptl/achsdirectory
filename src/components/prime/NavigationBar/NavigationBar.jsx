@@ -34,7 +34,7 @@ const NavigationBar = ({ searchChange }) => {
     {
       label: "ACHS Directory",
       icon: "pi pi-home",
-      href: "/home",
+      href: "/",
       menuitem: {
         style: {
           paddingTop: 0,
@@ -49,7 +49,6 @@ const NavigationBar = ({ searchChange }) => {
     {
       label: "Departments",
       icon: "pi pi-home",
-      href: "/home",
       menuitem: { style: { marginLeft: "1rem" } }, // Pass through options for the Math button
       items: [
         {
