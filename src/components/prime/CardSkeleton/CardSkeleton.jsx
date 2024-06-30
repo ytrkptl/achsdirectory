@@ -1,11 +1,11 @@
 import { Skeleton } from "primereact/skeleton";
-import "./CardSkeleton.css";
+import { SkeletonCardDetails } from "./CardSkeleton.styles";
 
 const CardSkeleton = () => {
   return (
-    <div style={{ marginTop: `20px` }} className="SkeletonCardDetails">
+    <SkeletonCardDetails>
       <Skeleton width="170px" height="210px"></Skeleton>
-    </div>
+    </SkeletonCardDetails>
   );
 };
 

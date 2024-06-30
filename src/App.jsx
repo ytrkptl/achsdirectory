@@ -6,7 +6,8 @@ import NavigationBar from "./components/prime/NavigationBar/NavigationBar";
 import "primereact/resources/themes/lara-dark-blue/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
-
+import { GlobalStyle } from "./styles/GlobalStyles";
+import { ParentContainer, StyledMainElement } from "./App.styles";
 import "./App.css";
 
 const initialState = {
@@ -34,13 +35,14 @@ class App extends Component {
       <Fragment>
         <ErrorBoundary>
           <Suspense fallback={<h1>Loading...</h1>}>
-            <div className="mainContainer">
+            <GlobalStyle />
+            <ParentContainer>
               <NavigationBar searchChange={this.onSearchChange} />
-              <main className="mainDiv">
+              <StyledMainElement>
                 <RoutesComponent searchfield={this.state.searchfield} />
-              </main>
+              </StyledMainElement>
               <Footer />
-            </div>
+            </ParentContainer>
           </Suspense>
         </ErrorBoundary>
       </Fragment>

@@ -1,6 +1,7 @@
 import { Menubar } from "primereact/menubar";
 import { NavLink } from "react-router-dom";
 import SearchBox from "../SearchBox/SearchBox";
+import { StyledProjectTitle } from "./NavigationBar.styles";
 import "./NavigationBar.css";
 
 const NavigationBar = ({ searchChange }) => {
@@ -11,7 +12,7 @@ const NavigationBar = ({ searchChange }) => {
       style={item.menuitem?.style}
       onClick={item.menuitem?.onClick}
     >
-      <h1>{item.label}</h1>
+      <StyledProjectTitle>{item.label}</StyledProjectTitle>
     </NavLink>
   );
 

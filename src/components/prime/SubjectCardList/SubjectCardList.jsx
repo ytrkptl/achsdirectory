@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Data from "../../../data.json";
 import Card from "../../Card";
-import "./SubjectCardList.css";
+import { StyledSubjectCardList } from "./SubjectCardList.styles";
 
 const SubjectCardList = ({ searchfield }) => {
   const [contacts, setContacts] = useState([]);
@@ -64,7 +64,7 @@ const SubjectCardList = ({ searchfield }) => {
       : filterSearchByDepartment;
 
   return (
-    <div className="subjectCardList">
+    <StyledSubjectCardList>
       {contactsToUse.length < 1 ? (
         <div>Loading...</div>
       ) : (
@@ -78,7 +78,7 @@ const SubjectCardList = ({ searchfield }) => {
           );
         })
       )}
-    </div>
+    </StyledSubjectCardList>
   );
 };
 export default SubjectCardList;
