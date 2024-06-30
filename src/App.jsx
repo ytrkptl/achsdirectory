@@ -8,7 +8,6 @@ import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { ParentContainer, StyledMainElement } from "./App.styles";
-import "./App.css";
 
 const initialState = {
   searchfield: "",
