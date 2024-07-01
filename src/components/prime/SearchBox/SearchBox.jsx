@@ -1,8 +1,12 @@
+import { SearchContext } from "@/context/SearchContext";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
+import { useContext } from "react";
 
-const SearchBox = ({ searchChange }) => {
+const SearchBox = () => {
+  const { searchfield, setSearchField } = useContext(SearchContext);
+
   return (
     <IconField iconPosition="left">
       <InputIcon className="pi pi-search"> </InputIcon>
@@ -11,7 +15,8 @@ const SearchBox = ({ searchChange }) => {
         type="search"
         style={{ width: "100%" }}
         id="searchBox"
-        onChange={searchChange}
+        value={searchfield}
+        onChange={(e) => setSearchField(e.target.value)}
       />
     </IconField>
   );

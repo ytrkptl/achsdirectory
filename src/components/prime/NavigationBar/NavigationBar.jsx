@@ -1,33 +1,42 @@
 import { Menubar } from "primereact/menubar";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import SearchBox from "../SearchBox/SearchBox";
 import { StyledProjectTitle } from "./NavigationBar.styles";
 import "./NavigationBar.css";
+import { useContext } from "react";
+import { SearchContext } from "@/context/SearchContext";
 
-const NavigationBar = ({ searchChange }) => {
+const NavigationBar = () => {
+  const navigate = useNavigate(); // Access setSearchfield from the context
+  const { setSearchField } = useContext(SearchContext);
+
+  const handleClick = (href) => {
+    setSearchField(""); // Clear the search field when navigating
+    navigate(href);
+  };
+
   const companyTitleRenderer = (item) => (
     <NavLink
       to={item.href}
       className="d-flex align-items-center p-menuitem-link"
       style={item.menuitem?.style}
-      onClick={item.menuitem?.onClick}
+      onClick={() => handleClick(item.href)}
     >
       <StyledProjectTitle>{item.label}</StyledProjectTitle>
     </NavLink>
   );
 
   const itemRenderer = (item) => (
-    <NavLink
+    <Link
       to={item.href}
       className="d-flex align-items-center p-menuitem-link p-0"
       style={item.menuitem?.style}
-      onClick={item.menuitem?.onClick}
     >
       {item.icon && (
         <span className={item.icon} style={item.iconStyle?.style}></span>
       )}
       <span className="mx-2">{item.label}</span>
-    </NavLink>
+    </Link>
   );
 
   const items = [
@@ -49,6 +58,7 @@ const NavigationBar = ({ searchChange }) => {
     {
       label: "Departments",
       icon: "pi pi-home",
+      href: "/",
       menuitem: { style: { marginLeft: "1rem" } }, // Pass through options for the Math button
       items: [
         {
@@ -118,7 +128,7 @@ const NavigationBar = ({ searchChange }) => {
     <img alt="logo" src="/hippo.png" height="40" className="mr-4"></img>
   );
 
-  const end = <SearchBox searchChange={searchChange} />;
+  const end = <SearchBox />;
 
   return (
     <Menubar

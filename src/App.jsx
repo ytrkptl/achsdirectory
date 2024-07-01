@@ -8,27 +8,9 @@ import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { ParentContainer, StyledMainElement } from "./App.styles";
-
-const initialState = {
-  searchfield: "",
-};
+import { SearchProvider } from "./context/SearchContext";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      ...initialState,
-    };
-  }
-
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value });
-  };
-
-  onMenuChange = () => {
-    this.setState({ navMenu: true, isAdmin: true, adminRoute: "adminHome" });
-  };
-
   render() {
     return (
       <Fragment>
@@ -36,10 +18,12 @@ class App extends Component {
           <Suspense fallback={<h1>Loading...</h1>}>
             <GlobalStyle />
             <ParentContainer>
-              <NavigationBar searchChange={this.onSearchChange} />
-              <StyledMainElement>
-                <RoutesComponent searchfield={this.state.searchfield} />
-              </StyledMainElement>
+              <SearchProvider>
+                <NavigationBar />
+                <StyledMainElement>
+                  <RoutesComponent />
+                </StyledMainElement>
+              </SearchProvider>
               <Footer />
             </ParentContainer>
           </Suspense>

@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import Data from "@/data/data.json";
 import Card from "@/components/Card";
 import { StyledSubjectCardList } from "./SubjectCardList.styles";
+import { SearchContext } from "@/context/SearchContext";
 
-const SubjectCardList = ({ searchfield }) => {
+const SubjectCardList = ({ departmentId }) => {
   const [contacts, setContacts] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [filterSearchByDepartment, setFilterSearchByDepartment] = useState([]);
   const [loadingContacts, setLoadingContacts] = useState(false);
-  const { departmentId } = useParams();
+  const { searchfield } = useContext(SearchContext);
 
   useEffect(() => {
     setLoadingContacts(true);
@@ -62,7 +62,9 @@ const SubjectCardList = ({ searchfield }) => {
       {loadingContacts ? (
         <div>Loading...</div>
       ) : contactsToUse.length < 1 ? (
-        <div>No Contacts Found</div>
+        <h2
+          style={{ color: "hotpink" }}
+        >{`No matching contacts found in the ${departmentId.toUpperCase()} department.`}</h2>
       ) : (
         contactsToUse.map((item, i) => {
           return (
