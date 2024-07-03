@@ -8,6 +8,7 @@ import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { ParentContainer, StyledMainElement } from "./App.styles";
+import { ContactsProvider } from "./context/ContactsContext";
 import { SearchProvider } from "./context/SearchContext";
 
 class App extends Component {
@@ -18,12 +19,14 @@ class App extends Component {
           <Suspense fallback={<h1>Loading...</h1>}>
             <GlobalStyle />
             <ParentContainer>
-              <SearchProvider>
-                <NavigationBar />
-                <StyledMainElement>
-                  <RoutesComponent />
-                </StyledMainElement>
-              </SearchProvider>
+              <ContactsProvider>
+                <SearchProvider>
+                  <NavigationBar />
+                  <StyledMainElement>
+                    <RoutesComponent />
+                  </StyledMainElement>
+                </SearchProvider>
+              </ContactsProvider>
               <Footer />
             </ParentContainer>
           </Suspense>
