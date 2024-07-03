@@ -2,9 +2,9 @@ import { Menubar } from "primereact/menubar";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import SearchBox from "../SearchBox/SearchBox";
 import { StyledProjectTitle } from "./NavigationBar.styles";
-import "./NavigationBar.css";
 import { useContext } from "react";
 import { SearchContext } from "@/context/SearchContext";
+import "./NavigationBar.css";
 
 const NavigationBar = () => {
   const navigate = useNavigate(); // Access setSearchfield from the context
