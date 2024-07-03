@@ -8,20 +8,9 @@ import "./Home.css";
 const Home = () => {
   const { contactsNew } = useContext(ContactsContext);
   const [filteredContacts, setFilteredContacts] = useState([]);
-  const [loadingContacts, setLoadingContacts] = useState(false);
+  const [loadingContacts, setLoadingContacts] = useState(true);
   const { searchfield } = useContext(SearchContext);
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    // setContacts(Data);
-    // setFilteredContacts(Data);
-
-    return () => {
-      setLoadingContacts(true);
-      // setContacts([]);
-      // setFilteredContacts([]);
-    };
-  }, []);
 
   useEffect(() => {
     setLoadingContacts(true);
@@ -51,13 +40,13 @@ const Home = () => {
 
   return (
     <Fragment>
-      {loadingContacts ? (
-        <h1>Loading...</h1>
-      ) : (
-        <section className="home-section">
+      <section className="home-section">
+        {loadingContacts ? (
+          <h1>Loading...</h1>
+        ) : (
           <FilteredCardList contacts={filteredContacts} />
-        </section>
-      )}
+        )}
+      </section>
     </Fragment>
   );
 };

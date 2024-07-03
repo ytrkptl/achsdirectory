@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ButtonLikeLink from "./ButtonLikeLink";
-import { ContactsContext } from "@/context/ContactsContext";
 import CardSkeleton from "./prime/CardSkeleton/CardSkeleton";
+import { ContactsContext } from "@/context/ContactsContext";
 import "./ContactDetails.css";
 
 const ContactDetails = ({ itemNum, contactInfoFromCardList }) => {
@@ -14,17 +14,21 @@ const ContactDetails = ({ itemNum, contactInfoFromCardList }) => {
   useEffect(() => {
     setLoading(true);
 
-    const found = contactsNew.find(
-      (item) => item.id === Number(contactId) || item.id === Number(itemNum)
-    )?.contacts;
+    let contactItem;
 
-    if (!found) {
-      setLoading(false);
+    if (!contactId) {
+      contactItem = contactInfoFromCardList;
+    } else {
+      contactItem = contactsNew.find((item) => item.id === Number(contactId)).contacts;
+    }
+
+    if (!contactItem) {
       setContactInfo(null);
+      setLoading(false);
       return;
     }
 
-    setContactInfo(found);
+    setContactInfo(contactItem);
     setLoading(false);
 
     return () => {

@@ -14,17 +14,21 @@ const Card = ({ itemNum, contactInfoFromCardList }) => {
   useEffect(() => {
     setLoading(true);
 
-    const found = contactsNew.find(
-      (item) => item.id === Number(contactId) || item.id === Number(itemNum)
-    )?.contacts;
+    let contactItem;
 
-    if (!found) {
-      setLoading(false);
+    if (!contactId) {
+      contactItem = contactInfoFromCardList;
+    } else {
+      contactItem = contactsNew.find((item) => item.id === Number(contactId)).contacts;
+    }
+
+    if (!contactItem) {
       setContactInfo(null);
+      setLoading(false);
       return;
     }
 
-    setContactInfo(found);
+    setContactInfo(contactItem);
     setLoading(false);
 
     return () => {
