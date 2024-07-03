@@ -1,31 +1,44 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ButtonLikeLink from "./ButtonLikeLink";
-import Data from "@/data/data.json";
 import CardSkeleton from "./prime/CardSkeleton/CardSkeleton";
+import { ContactsContext } from "@/context/ContactsContext";
 import "./Card.css";
 
 const Card = ({ itemNum, contactInfoFromCardList }) => {
+  const { contactsNew } = useContext(ContactsContext);
   const [contactInfo, setContactInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { contactId } = useParams();
 
   useEffect(() => {
-    let contactItem;
-    if (!contactId) {
-      contactItem = contactInfoFromCardList;
-    } else {
-      contactItem = Data.find((item) => item.id === Number(contactId)).contacts;
+    setLoading(true);
+
+    const found = contactsNew.find(
+      (item) => item.id === Number(contactId) || item.id === Number(itemNum)
+    )?.contacts;
+
+    if (!found) {
+      setLoading(false);
+      setContactInfo(null);
+      return;
     }
 
-    setContactInfo(contactItem);
+    setContactInfo(found);
+    setLoading(false);
 
     return () => {
       setContactInfo(null);
+      setLoading(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contactId, itemNum]);
 
-  if (!contactInfo) return <CardSkeleton />;
+  if (loading) return <CardSkeleton />;
+
+  if (!contactInfo && !loading) {
+    return <h1 style={{ color: "hotpink" }}>No contact found!</h1>;
+  }
 
   const { firstname, lastname, phone, email, urlNew, id, department } =
     contactId ? contactInfo : contactInfoFromCardList;

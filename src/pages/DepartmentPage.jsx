@@ -5,7 +5,7 @@ import { SearchContext } from "@/context/SearchContext";
 import { ContactsContext } from "@/context/ContactsContext";
 import "./Home.css";
 
-const Home = () => {
+const DepartmentPage = () => {
   const { contactsNew } = useContext(ContactsContext);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [loadingContacts, setLoadingContacts] = useState(false);
@@ -13,31 +13,26 @@ const Home = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // setContacts(Data);
-    // setFilteredContacts(Data);
-
-    return () => {
-      setLoadingContacts(true);
-      // setContacts([]);
-      // setFilteredContacts([]);
-    };
-  }, []);
-
-  useEffect(() => {
     setLoadingContacts(true);
+    const searchTerm = searchfield.trim().toLowerCase();
     const filteredContactsForSearch = contactsNew.filter((item) => {
-      const { lastname, firstname, email, phone } = item.contacts;
+      const { lastname, firstname, email, phone, department } = item.contacts;
       const fullName = `${firstname} ${lastname}`;
       const fullNameReversed = `${lastname} ${firstname}`;
-      const searchTerm = searchfield.trim().toLowerCase();
+
+      const splitPathname = pathname.split("/").filter((item) => item !== "");
+      const departmentUrl = splitPathname[0];
+
+      const isInDepartment = department.toLowerCase() === departmentUrl;
 
       return (
-        lastname.toLowerCase().includes(searchTerm) ||
-        firstname.toLowerCase().includes(searchTerm) ||
-        fullName.toLowerCase().includes(searchTerm) ||
-        fullNameReversed.toLowerCase().includes(searchTerm) ||
-        email.toLowerCase().includes(searchTerm) ||
-        phone.toLowerCase().includes(searchTerm)
+        isInDepartment &&
+        (lastname.toLowerCase().includes(searchTerm) ||
+          firstname.toLowerCase().includes(searchTerm) ||
+          fullName.toLowerCase().includes(searchTerm) ||
+          fullNameReversed.toLowerCase().includes(searchTerm) ||
+          email.toLowerCase().includes(searchTerm) ||
+          phone.toLowerCase().includes(searchTerm))
       );
     });
     setFilteredContacts(filteredContactsForSearch);
@@ -62,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default DepartmentPage;

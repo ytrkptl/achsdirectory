@@ -31,6 +31,7 @@ const NavigationBar = () => {
       to={item.href}
       className="d-flex align-items-center p-menuitem-link p-0"
       style={item.menuitem?.style}
+      onClick={() => handleClick(item.href)}
     >
       {item.icon && (
         <span className={item.icon} style={item.iconStyle?.style}></span>

@@ -36,7 +36,7 @@ const ErrorImageOverlay = styled.div`
 
 const ErrorImageContainer = styled.div`
   display: inline-block;
-  background-image: url(${(props) => props.imageUrl});
+  background-image: url(${(props) => props.$imageurl});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@ const NoMatch = () => {
       <button onClick={() => navigate("/")}>
         Click here to go to the home page!
       </button>
-      <ErrorImageContainer imageUrl="https://i.imgur.com/yW2W9SC.png" />
+      <ErrorImageContainer $imageurl="https://i.imgur.com/yW2W9SC.png" />
       <h2>Sorry this page is broken</h2>
     </ErrorImageOverlay>
   );
