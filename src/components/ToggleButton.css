@@ -9,8 +9,8 @@
 .toggle-div-2 {
   display: flex;
   position: relative;
-  width: 60px;
-  height: 30px;
+  width: 50px;
+  height: 24px;
   background-color: gray;
   border-radius: 22px;
   align-items: center;
@@ -20,8 +20,8 @@
 .slider {
   display: flex;
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   background-color: white;
   border-radius: 50%;
   margin: auto;
@@ -34,7 +34,7 @@
 }
 
 .round {
-  transform: translateX(30px);
+  transform: translateX(24px);
 }
 
 .switchLabel22 {
@@ -43,4 +43,6 @@
   color: hotpink;
   margin: 0;
   padding: 0;
+  text-wrap: nowrap;
+  font-size: 1rem;
 }
