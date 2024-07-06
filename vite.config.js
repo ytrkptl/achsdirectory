@@ -5,7 +5,7 @@ import path from 'path'
 
 export default ({ mode }) => {
   // Load environment variables
-  const env = loadEnv(mode,  '');
+  const env = loadEnv(mode,  process.cwd());
   
   // https://vitejs.dev/config/
   return defineConfig({
@@ -24,7 +24,7 @@ export default ({ mode }) => {
     base: env.BASE_URL,
     build: {
       rollupOptions: {
-        input: './src/main.jsx',
+        input: './index.html',
       }
     },
     resolve: {
