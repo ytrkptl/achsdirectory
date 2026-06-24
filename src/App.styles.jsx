@@ -10,7 +10,7 @@ export const ParentContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 58px 1fr 54px;
   overflow: hidden;
-  background-image: url("./assets/chalkboard.jpg");
+  background-image: url("/chalkboard.jpg");
   box-sizing: border-box;
 `;
 
