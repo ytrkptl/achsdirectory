@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // import Hamburger from "./Hamburger";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import "./NavTabs.css";
 
 const NavTabs2 = ({ subjectUrls, subjectsForDisplay }) => {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 // usage of useHistory is perfectly fine here as we don't expect
 // users to bookmark from an Error page.

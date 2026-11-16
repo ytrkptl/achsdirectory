@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import "./ButtonLikeLink.css";
 
 const ButtonLikeLink = ({ to, text, goBack = false }) => {
@@ -6,7 +6,14 @@ const ButtonLikeLink = ({ to, text, goBack = false }) => {
 
   if (goBack) {
     return (
-      <Link onClick={() => navigate(-1)} className="button-like-link">
+      <Link
+        to=".."
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(-1);
+        }}
+        className="button-like-link"
+      >
         {text}
       </Link>
     );
