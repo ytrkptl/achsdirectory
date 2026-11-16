@@ -11,24 +11,24 @@
   },
   "dependencies": {
     "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.4.0",
+    "@tsparticles/slim": "^3.9.1",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
-    "primereact": "^10.6.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.11"
+    "primereact": "^10.9.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6",
+    "styled-components": "^6.6.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "vite": "^5.2.0",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "vite": "^5.4.21",
     "vite-plugin-html": "^3.2.2"
   }
 }
