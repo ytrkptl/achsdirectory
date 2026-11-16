@@ -1,4 +1,4 @@
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router";
 import HomePage from "@/pages/HomePage";
 import DepartmentPage from "@/pages/DepartmentPage";
 import ContactPage from "@/pages/ContactPage";

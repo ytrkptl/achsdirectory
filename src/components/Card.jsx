@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import ButtonLikeLink from "./ButtonLikeLink";
 import CardSkeleton from "./prime/CardSkeleton/CardSkeleton";

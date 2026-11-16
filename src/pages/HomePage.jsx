@@ -1,6 +1,6 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import FilteredCardList from "@/components/FilteredCardList";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { SearchContext } from "@/context/SearchContext";
 import { ContactsContext } from "@/context/ContactsContext";
 import "./Home.css";
